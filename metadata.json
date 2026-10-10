@@ -1,0 +1,6 @@
+{
+  "name": "D-Kart Urdu Voice-Over Commercial Studio",
+  "description": "Professional Pakistani Urdu commercial voice-over artist and 19-second e-commerce reel studio powered by Gemini 3.8 Flash TTS for the 40W Electric Lunch Box.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

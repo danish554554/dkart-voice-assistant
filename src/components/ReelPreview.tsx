@@ -54,13 +54,13 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
   return (
     <div className="flex flex-col items-center">
       {/* Platform Switcher */}
-      <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl mb-4 text-xs font-semibold">
+      <div className="flex items-center gap-1.5 p-1 bg-zinc-100 border border-zinc-200 rounded-xl mb-4 text-xs font-semibold">
         <button
           onClick={() => setPlatform('daraz')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'daraz'
-              ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-black text-white font-bold shadow-xs'
+              : 'text-zinc-600 hover:text-black'
           }`}
         >
           <ShoppingBag className="w-3.5 h-3.5" />
@@ -71,8 +71,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('tiktok')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'tiktok'
-              ? 'bg-rose-500 text-white font-bold shadow-xs'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-black text-white font-bold shadow-xs'
+              : 'text-zinc-600 hover:text-black'
           }`}
         >
           <Music2 className="w-3.5 h-3.5" />
@@ -83,8 +83,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('instagram')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'instagram'
-              ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-xs'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-black text-white font-bold shadow-xs'
+              : 'text-zinc-600 hover:text-black'
           }`}
         >
           <Sparkles className="w-3.5 h-3.5" />
@@ -265,46 +265,46 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
             </div>
 
             {/* Live Urdu Karaoke Subtitle Box */}
-            <div className="bg-slate-900/90 backdrop-blur-md border border-amber-500/30 rounded-xl p-2.5 shadow-lg text-right">
-              <div className="flex items-center justify-between pb-1 border-b border-slate-800 mb-1 text-[9px]">
-                <span className="text-amber-400 font-mono font-medium flex items-center gap-1">
-                  <Volume2 className="w-2.5 h-2.5" />
+            <div className="bg-black/90 backdrop-blur-md border border-zinc-700 rounded-xl p-2.5 shadow-lg text-right">
+              <div className="flex items-center justify-between pb-1 border-b border-zinc-800 mb-1 text-[9px]">
+                <span className="text-zinc-300 font-mono font-medium flex items-center gap-1">
+                  <Volume2 className="w-2.5 h-2.5 text-white" />
                   Voice: {voiceName} ({activeLine.role})
                 </span>
-                <span className="text-slate-400 font-mono">
+                <span className="text-zinc-400 font-mono">
                   {activeLine.startTime.toFixed(1)}s - {activeLine.endTime.toFixed(1)}s
                 </span>
               </div>
 
               {/* Large Styled Urdu Line */}
-              <p className="text-base sm:text-lg font-bold font-urdu text-amber-300 leading-relaxed text-right drop-shadow-md">
+              <p className="text-base sm:text-lg font-bold font-urdu text-white leading-relaxed text-right drop-shadow-md">
                 {activeLine.urdu}
               </p>
 
               {/* Roman / English Subtext */}
-              <p className="text-[10px] text-slate-400 text-left font-sans italic line-clamp-1 mt-0.5">
+              <p className="text-[10px] text-zinc-400 text-left font-sans italic line-clamp-1 mt-0.5">
                 {activeLine.english}
               </p>
             </div>
 
             {/* E-Commerce Buy Bar */}
-            <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-amber-500 to-orange-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-amber-500/20">
+            <div className="flex items-center justify-between gap-2 bg-white p-2 rounded-xl text-black font-bold shadow-md border border-zinc-200">
               <div className="flex flex-col">
-                <span className="text-[9px] uppercase tracking-wider text-slate-900 font-black">
+                <span className="text-[9px] uppercase tracking-wider text-zinc-600 font-black">
                   ڈی کارٹ ڈسکاؤنٹ آفر
                 </span>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-extrabold text-slate-950">Rs. 2,999</span>
-                  <span className="text-[10px] line-through text-slate-800/80">Rs. 4,999</span>
-                  <span className="text-[9px] bg-red-600 text-white px-1 rounded font-bold">
+                  <span className="text-sm font-extrabold text-black">Rs. 2,999</span>
+                  <span className="text-[10px] line-through text-zinc-400">Rs. 4,999</span>
+                  <span className="text-[9px] bg-black text-white px-1 rounded font-bold">
                     -40%
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 px-3 py-1.5 bg-slate-950 text-white rounded-lg text-xs font-black shadow-sm group-hover:bg-slate-900 transition-colors">
+              <div className="flex items-center gap-1 px-3 py-1.5 bg-black text-white rounded-lg text-xs font-black shadow-sm transition-colors">
                 <span>آرڈر کریں</span>
-                <ExternalLink className="w-3 h-3 text-amber-400" />
+                <ExternalLink className="w-3 h-3 text-white" />
               </div>
             </div>
           </div>

@@ -63,23 +63,23 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
   ];
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-5">
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800">
+    <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-5 text-zinc-900">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-zinc-200">
         <div>
           <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-amber-400" />
-            <h3 className="font-bold text-white text-base">
-              19-Second Commercial Reel Storyboard & Timing
+            <Clock className="w-4 h-4 text-zinc-900" />
+            <h3 className="font-bold text-zinc-900 text-base">
+              Commercial Reel Storyboard & Timing
             </h3>
           </div>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-zinc-500 mt-0.5">
             Engineered for optimum retention on Daraz, TikTok, and Meta Reels algorithms
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-mono bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800">
-          <span className="text-slate-400">Total Run Time:</span>
-          <span className="text-amber-400 font-bold">19.00s</span>
+        <div className="flex items-center gap-2 text-xs font-mono bg-zinc-100 px-3 py-1.5 rounded-xl border border-zinc-200">
+          <span className="text-zinc-600">Total Run Time:</span>
+          <span className="text-zinc-950 font-bold">19.00s</span>
         </div>
       </div>
 
@@ -93,49 +93,49 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
               onClick={() => onSeek(act.start)}
               className={`p-4 rounded-xl border transition-all cursor-pointer relative ${
                 isActive
-                  ? 'bg-amber-500/10 border-amber-500/60 shadow-lg shadow-amber-500/10 ring-1 ring-amber-500/30'
-                  : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
+                  ? 'bg-zinc-100 border-black ring-1 ring-black shadow-sm'
+                  : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
               }`}
             >
-              <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+              <div className="flex items-center justify-between pb-2 border-b border-zinc-200">
                 <div className="flex items-center gap-2">
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r border ${act.tagColor}`}>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-zinc-100 border border-zinc-200 text-zinc-800">
                     Act 0{act.act}
                   </span>
-                  <span className="font-bold text-xs text-white">
+                  <span className="font-bold text-xs text-zinc-900">
                     {act.name}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-400">
+                <div className="flex items-center gap-1.5 font-mono text-[11px] text-zinc-500">
                   <span>{act.timeRange}</span>
-                  <PlayCircle className="w-3.5 h-3.5 text-amber-400 hover:scale-110 transition-transform" />
+                  <PlayCircle className="w-3.5 h-3.5 text-zinc-900 hover:scale-110 transition-transform" />
                 </div>
               </div>
 
               {/* Urdu Line */}
               <div className="py-2.5 text-right">
-                <p className="text-base font-bold font-urdu text-amber-300 leading-relaxed">
+                <p className="text-base font-bold font-urdu text-zinc-950 leading-relaxed">
                   {act.urduSummary}
                 </p>
               </div>
 
               {/* Specifications */}
-              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/60 text-[11px]">
-                <div className="bg-slate-900/80 p-2 rounded-lg border border-slate-800">
-                  <span className="text-slate-500 block text-[9px] uppercase font-bold">
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-zinc-200 text-[11px]">
+                <div className="bg-white p-2 rounded-lg border border-zinc-200">
+                  <span className="text-zinc-500 block text-[9px] uppercase font-bold">
                     Tone / Energy
                   </span>
-                  <span className="text-slate-200 font-medium">
+                  <span className="text-zinc-900 font-medium">
                     {act.energy}
                   </span>
                 </div>
 
-                <div className="bg-slate-900/80 p-2 rounded-lg border border-slate-800">
-                  <span className="text-slate-500 block text-[9px] uppercase font-bold">
+                <div className="bg-white p-2 rounded-lg border border-zinc-200">
+                  <span className="text-zinc-500 block text-[9px] uppercase font-bold">
                     Visual Scene Cue
                   </span>
-                  <span className="text-slate-300 line-clamp-1">
+                  <span className="text-zinc-600 line-clamp-1">
                     {act.visualCue}
                   </span>
                 </div>

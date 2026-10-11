@@ -175,7 +175,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Top Studio Navbar */}
       <Navbar
         onQuickGenerate={() => generateVoiceOver()}
@@ -186,74 +186,71 @@ export default function App() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* Hero Banner with Product Context */}
         {/* Universal Studio Header Banner */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-rose-950/40 border border-slate-800 p-6 shadow-2xl">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
-
+        <div className="relative overflow-hidden rounded-3xl bg-white border border-zinc-200 p-6 shadow-sm">
           <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-1 rounded-lg bg-rose-500/20 border border-rose-500/40 text-rose-300 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-xs">
-                  <Mic className="w-3.5 h-3.5 text-rose-400" />
+                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-xs">
+                  <Mic className="w-3.5 h-3.5 text-zinc-900" />
                   Voice: {activeVoiceObj.name} • {activeVoiceObj.accent}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
-                  <Radio className="w-3.5 h-3.5 animate-pulse" />
+                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-800 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                  <Radio className="w-3.5 h-3.5 text-zinc-900 animate-pulse" />
                   Commercial Studio
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 font-mono text-xs">
+                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 text-zinc-800 font-mono text-xs border border-zinc-200">
                   Model: {selectedModel}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                <span className="px-2.5 py-1 rounded-lg bg-black text-white text-xs font-semibold">
                   {playbackRate}x Export Speed
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight leading-tight">
                 Pakistani Urdu Voice-Over Studio
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-400 to-orange-400">
+                <span className="block text-zinc-500 font-bold">
                   AI Commercial & Social Reels Production
                 </span>
               </h1>
 
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-zinc-600 leading-relaxed">
                 Universal studio-grade Urdu text-to-speech for any e-commerce product, Daraz campaign, TikTok ads, or Instagram reels. Featuring native Pakistani regional accents (Karachi, Lahore, Islamabad, Influencer, FM Radio) powered by Google Gemini TTS.
               </p>
             </div>
 
             {/* Studio Capabilities Overview */}
             <div className="grid grid-cols-2 gap-3 w-full lg:w-auto shrink-0 text-xs">
-              <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
-                <div className="flex items-center gap-1.5 text-amber-400 font-bold mb-1">
-                  <Flame className="w-4 h-4" />
+              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
+                  <Flame className="w-4 h-4 text-zinc-900" />
                   <span>Gemini 3.8 TTS</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">24kHz Broadcast Audio</p>
+                <p className="text-zinc-500 text-[11px]">24kHz Broadcast Audio</p>
               </div>
 
-              <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
-                <div className="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
-                  <CheckCircle2 className="w-4 h-4" />
+              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
+                  <CheckCircle2 className="w-4 h-4 text-zinc-900" />
                   <span>5+ Native Accents</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Karachi, Lahore, Capital</p>
+                <p className="text-zinc-500 text-[11px]">Karachi, Lahore, Capital</p>
               </div>
 
-              <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
-                <div className="flex items-center gap-1.5 text-indigo-400 font-bold mb-1">
-                  <Zap className="w-4 h-4" />
+              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
+                  <Zap className="w-4 h-4 text-zinc-900" />
                   <span>0.5x – 2.0x Speed</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Exact .WAV Export Render</p>
+                <p className="text-zinc-500 text-[11px]">Exact .WAV Export Render</p>
               </div>
 
-              <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
-                <div className="flex items-center gap-1.5 text-rose-400 font-bold mb-1">
-                  <Clock className="w-4 h-4" />
+              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
+                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
+                  <Clock className="w-4 h-4 text-zinc-900" />
                   <span>9:16 Video Sync</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Daraz & TikTok Mockup</p>
+                <p className="text-zinc-500 text-[11px]">Daraz & TikTok Mockup</p>
               </div>
             </div>
           </div>
@@ -261,14 +258,14 @@ export default function App() {
 
         {/* Notifications / Alerts */}
         {errorMessage && (
-          <div className="p-4 rounded-2xl bg-rose-950/50 border border-rose-500/40 text-rose-200 text-xs flex items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl bg-zinc-100 border border-zinc-300 text-zinc-900 text-xs flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+              <AlertCircle className="w-4 h-4 text-zinc-900 shrink-0" />
               <span>{errorMessage}</span>
             </div>
             <button
               onClick={() => setErrorMessage(null)}
-              className="px-2 py-1 rounded bg-rose-900/60 hover:bg-rose-900 text-rose-100 font-semibold cursor-pointer"
+              className="px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300 text-zinc-900 font-semibold cursor-pointer"
             >
               Dismiss
             </button>
@@ -276,12 +273,12 @@ export default function App() {
         )}
 
         {statusMessage && !errorMessage && (
-          <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex items-center justify-between gap-3">
+          <div className="p-3.5 rounded-2xl bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+              <Sparkles className="w-4 h-4 text-zinc-900 shrink-0" />
               <span>{statusMessage}</span>
             </div>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-zinc-500">
               Source: {source}
             </span>
           </div>
@@ -302,13 +299,13 @@ export default function App() {
         />
 
         {/* Studio Navigation Tabs */}
-        <div className="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+        <div className="flex items-center gap-2 border-b border-zinc-200 pb-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('studio')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'studio'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-zinc-600 hover:text-black hover:bg-zinc-100'
             }`}
           >
             <Mic className="w-4 h-4" />
@@ -319,8 +316,8 @@ export default function App() {
             onClick={() => setActiveTab('reel')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'reel'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-zinc-600 hover:text-black hover:bg-zinc-100'
             }`}
           >
             <Video className="w-4 h-4" />
@@ -331,8 +328,8 @@ export default function App() {
             onClick={() => setActiveTab('storyboard')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'storyboard'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-zinc-600 hover:text-black hover:bg-zinc-100'
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -343,8 +340,8 @@ export default function App() {
             onClick={() => setActiveTab('specs')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'specs'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-zinc-600 hover:text-black hover:bg-zinc-100'
             }`}
           >
             <FileText className="w-4 h-4" />
@@ -375,15 +372,15 @@ export default function App() {
             {/* Live Synchronized Reel Preview & Scene Storyboard */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               <div className="lg:col-span-5 flex justify-center">
-                <div className="w-full bg-slate-900/60 border border-slate-800 rounded-3xl p-5 flex flex-col items-center shadow-xl">
-                  <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                <div className="w-full bg-white border border-zinc-200 rounded-3xl p-5 flex flex-col items-center shadow-sm">
+                  <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-zinc-200">
                     <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-                      <h4 className="font-bold text-xs sm:text-sm text-white">
+                      <span className="w-2.5 h-2.5 rounded-full bg-black animate-pulse"></span>
+                      <h4 className="font-bold text-xs sm:text-sm text-zinc-900">
                         Live 9:16 Ad Reel Visualizer
                       </h4>
                     </div>
-                    <span className="text-[11px] font-mono text-amber-400">
+                    <span className="text-[11px] font-mono text-zinc-700 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">
                       Sync: {currentTime.toFixed(1)}s / {duration.toFixed(1)}s
                     </span>
                   </div>
@@ -397,15 +394,15 @@ export default function App() {
               </div>
 
               <div className="lg:col-span-7 space-y-4">
-                <div className="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 shadow-xl space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="bg-white border border-zinc-200 rounded-3xl p-5 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-zinc-200">
                     <div className="flex items-center gap-2">
-                      <Layers className="w-4 h-4 text-amber-400" />
-                      <h4 className="font-bold text-white text-sm">
+                      <Layers className="w-4 h-4 text-zinc-900" />
+                      <h4 className="font-bold text-zinc-900 text-sm">
                         Live Scene Timing & Playback Sync
                       </h4>
                     </div>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-zinc-500 font-mono">
                       {SCRIPT_LINES.length} Acts Breakdown
                     </span>
                   </div>
@@ -419,24 +416,24 @@ export default function App() {
                           onClick={() => handleSeekRequest(line.startTime)}
                           className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                             isSpoken
-                              ? 'bg-amber-500/10 border-amber-500/60 shadow-md shadow-amber-500/10 ring-1 ring-amber-500/40'
-                              : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 hover:bg-slate-950'
+                              ? 'bg-zinc-100 border-black ring-1 ring-black shadow-sm'
+                              : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100/60'
                           }`}
                         >
                           <div className="flex items-center justify-between text-xs pb-1">
-                            <span className="font-bold text-amber-400">
+                            <span className="font-bold text-zinc-900">
                               Act 0{line.id}: {line.role} ({line.startTime}s - {line.endTime}s)
                             </span>
                             {isSpoken && (
-                              <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold animate-pulse">
+                              <span className="text-[10px] bg-black text-white px-2 py-0.5 rounded-full font-bold">
                                 SPEAKING NOW
                               </span>
                             )}
                           </div>
-                          <p className="font-urdu text-lg font-bold text-right text-amber-200">
+                          <p className="font-urdu text-lg font-bold text-right text-zinc-950">
                             {line.urdu}
                           </p>
-                          <p className="text-xs text-slate-400 mt-1 italic">
+                          <p className="text-xs text-zinc-500 mt-1 italic">
                             "{line.roman}"
                           </p>
                         </div>
@@ -461,15 +458,15 @@ export default function App() {
             </div>
 
             <div className="md:col-span-6 lg:col-span-7 space-y-4">
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
-                <div className="flex items-center gap-2 pb-3 border-b border-slate-800">
-                  <ShoppingBag className="w-5 h-5 text-amber-400" />
-                  <h3 className="font-bold text-white text-base">
+              <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 pb-3 border-b border-zinc-200">
+                  <ShoppingBag className="w-5 h-5 text-zinc-900" />
+                  <h3 className="font-bold text-zinc-900 text-base">
                     E-Commerce Ad Deployment & Captions
                   </h3>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-zinc-600 leading-relaxed">
                   The generated voice-over audio is perfectly matched with vertical mobile layouts for Daraz Mall, TikTok Ads Manager, Meta Reels (Facebook & Instagram).
                 </p>
 
@@ -481,24 +478,24 @@ export default function App() {
                         key={line.id}
                         className={`p-3 rounded-xl border transition-all ${
                           isSpoken
-                            ? 'bg-amber-500/10 border-amber-500/60 shadow-md shadow-amber-500/10'
-                            : 'bg-slate-950 border-slate-800'
+                            ? 'bg-zinc-100 border-black shadow-sm'
+                            : 'bg-zinc-50 border-zinc-200'
                         }`}
                       >
                         <div className="flex items-center justify-between text-xs pb-1">
-                          <span className="font-bold text-amber-400">
+                          <span className="font-bold text-zinc-900">
                             Act 0{line.id}: {line.role} ({line.startTime}s - {line.endTime}s)
                           </span>
                           {isSpoken && (
-                            <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.2 rounded-full font-bold animate-pulse">
+                            <span className="text-[10px] bg-black text-white px-2 py-0.5 rounded-full font-bold">
                               NOW SPEAKING
                             </span>
                           )}
                         </div>
-                        <p className="font-urdu text-lg font-bold text-right text-amber-200">
+                        <p className="font-urdu text-lg font-bold text-right text-zinc-950">
                           {line.urdu}
                         </p>
-                        <p className="text-xs text-slate-400 mt-1 italic">
+                        <p className="text-xs text-zinc-500 mt-1 italic">
                           "{line.roman}"
                         </p>
                       </div>
@@ -523,11 +520,11 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 border-t border-slate-800/80 bg-slate-950 py-6 text-xs text-slate-500">
+      <footer className="mt-12 border-t border-zinc-200 bg-white py-6 text-xs text-zinc-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>D-Kart E-Commerce Media Studio • Electric Lunch Box 40W Voice-Over</span>
+            <span className="w-2 h-2 rounded-full bg-black"></span>
+            <span>D-Kart E-Commerce Media Studio • Commercial Voice-Over</span>
           </div>
 
           <div className="flex items-center gap-3">

@@ -33,10 +33,12 @@ export interface ScriptLine {
 
 export interface CommercialConfig {
   voice: string;
+  baseVoice?: string;
   model?: string;
   style: string;
   pace: string;
   script: string;
+  targetDuration?: string | number;
 }
 
 export interface GeneratedAudioState {

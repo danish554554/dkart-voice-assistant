@@ -27,7 +27,13 @@ export default async function handler(req: any, res: any) {
       model = 'gemini-3.8-flash-tts',
       style = 'Energetic, friendly, confident, and professional female Pakistani Urdu commercial voice-over artist for Daraz and TikTok e-commerce reels.',
       pace = 'moderately fast',
+      targetDuration,
     } = req.body || {};
+
+    const durationDirective =
+      targetDuration && targetDuration !== 'auto' && !isNaN(Number(targetDuration)) && Number(targetDuration) > 0
+        ? ` Target duration: approximately ${targetDuration} seconds.`
+        : '';
 
     const scriptText =
       script ||
@@ -78,7 +84,7 @@ export default async function handler(req: any, res: any) {
                 text: scriptText,
                 speechMetadata: {
                   speaker: prebuiltVoiceName,
-                  style: `${style}. Pacing: ${pace}. Target duration: ~19 seconds. Authentic Pakistani Urdu accent and natural flow.`,
+                  style: `${style}. Pacing: ${pace}.${durationDirective} Authentic Pakistani Urdu accent and natural flow.`,
                 },
               },
             ],
@@ -121,7 +127,7 @@ export default async function handler(req: any, res: any) {
                   text: scriptText,
                   speechMetadata: {
                     speaker: prebuiltVoiceName,
-                    style: `${style}. Pacing: ${pace}. Target duration: ~19 seconds. Authentic Pakistani Urdu accent and natural flow.`,
+                    style: `${style}. Pacing: ${pace}.${durationDirective} Authentic Pakistani Urdu accent and natural flow.`,
                   },
                 },
               ],

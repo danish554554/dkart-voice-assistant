@@ -13,6 +13,8 @@ import {
   Layers,
 } from 'lucide-react';
 
+import { exportAudioAtSpeed } from '../utils/audioExport';
+
 interface AudioPlayerProps {
   audioBase64: string | null;
   mimeType: string;
@@ -22,6 +24,8 @@ interface AudioPlayerProps {
   onTimeUpdate?: (currentTime: number, duration: number) => void;
   onSeekRequest?: (time: number) => void;
   targetDuration?: number;
+  playbackRate?: number;
+  onPlaybackRateChange?: (rate: number) => void;
 }
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
@@ -32,6 +36,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   voiceUsed,
   onTimeUpdate,
   targetDuration = 19,
+  playbackRate = 1.0,
+  onPlaybackRateChange,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -39,7 +45,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const [duration, setDuration] = useState<number>(targetDuration);
   const [volume, setVolume] = useState<number>(1);
   const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [playbackRate, setPlaybackRate] = useState<number>(1.0);
+  const [internalRate, setInternalRate] = useState<number>(playbackRate);
+  const [isExporting, setIsExporting] = useState<boolean>(false);
+
+  // Sync internal playback rate with prop
+  useEffect(() => {
+    setInternalRate(playbackRate);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = playbackRate;
+    }
+  }, [playbackRate]);
 
   // Set audio source when audioBase64 changes
   useEffect(() => {
@@ -123,33 +138,30 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   };
 
   const changePlaybackRate = (rate: number) => {
-    setPlaybackRate(rate);
+    setInternalRate(rate);
     if (audioRef.current) {
       audioRef.current.playbackRate = rate;
     }
+    if (onPlaybackRateChange) {
+      onPlaybackRateChange(rate);
+    }
   };
 
-  const handleDownload = () => {
-    if (!audioBase64) return;
+  const handleDownload = async () => {
+    if (!audioBase64 || isExporting) return;
+    setIsExporting(true);
     try {
-      const byteCharacters = atob(audioBase64);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: mimeType || 'audio/wav' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      const cleanVoiceTag = voiceUsed.replace(/[^a-zA-Z0-9]/g, '-').replace(/-+/g, '-').slice(0, 30);
-      a.download = `d-kart-electric-lunchbox-urdu-voiceover-19s-${cleanVoiceTag.toLowerCase() || 'female'}.wav`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      await exportAudioAtSpeed(
+        audioBase64,
+        mimeType,
+        internalRate,
+        'd-kart-urdu-commercial',
+        voiceUsed
+      );
     } catch (e) {
       console.error('Download failed', e);
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -203,11 +215,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           {audioBase64 && (
             <button
               onClick={handleDownload}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold transition-all cursor-pointer shadow-sm"
-              title="Download Master WAV Audio File"
+              disabled={isExporting}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold transition-all cursor-pointer shadow-sm disabled:opacity-50"
+              title={`Download audio rendered at ${internalRate}x speed`}
             >
-              <Download className="w-3.5 h-3.5 text-amber-400" />
-              <span>Download .WAV</span>
+              {isExporting ? (
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+              ) : (
+                <Download className="w-3.5 h-3.5 text-amber-400" />
+              )}
+              <span>{isExporting ? 'Exporting...' : `Download .WAV (${internalRate}x)`}</span>
             </button>
           )}
         </div>
@@ -280,9 +297,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             <span>{formatTime(currentTime)}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-slate-500">
-              Commercial Target: 19.00s
-            </span>
+            {targetDuration && targetDuration > 0 && (
+              <span className="text-slate-500">
+                Commercial Target: {targetDuration.toFixed(2)}s
+              </span>
+            )}
             <span className="text-slate-300 font-medium">
               / {formatTime(duration)}
             </span>
@@ -316,19 +335,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             <RotateCcw className="w-4 h-4" />
           </button>
 
-          {/* Speed selector */}
+          {/* Speed selector matching user screenshot */}
           <div className="flex items-center bg-slate-950 border border-slate-800 rounded-xl p-0.5 text-xs font-medium">
-            {[0.8, 1.0, 1.2].map((rate) => (
+            {[0.8, 1.0, 1.2, 1.5].map((rate) => (
               <button
                 key={rate}
                 onClick={() => changePlaybackRate(rate)}
-                className={`px-2 py-1 rounded-lg transition-colors cursor-pointer ${
-                  playbackRate === rate
-                    ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30'
+                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                  internalRate === rate
+                    ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40 shadow-xs'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
+                title={`Play & download audio at ${rate}x speed`}
               >
-                {rate}x
+                {rate === 1.0 ? '1x' : `${rate}x`}
               </button>
             ))}
           </div>

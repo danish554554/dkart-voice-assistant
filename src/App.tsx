@@ -32,6 +32,8 @@ export default function App() {
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [duration, setDuration] = useState<number>(19);
+  const [playbackRate, setPlaybackRate] = useState<number>(1.0);
+  const [targetDuration, setTargetDuration] = useState<string | number>('auto');
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'studio' | 'reel' | 'storyboard' | 'specs'>('studio');
@@ -39,9 +41,12 @@ export default function App() {
   const activeVoiceObj =
     VOICE_OPTIONS.find((v) => v.id === selectedVoice) || VOICE_OPTIONS[0];
 
-  // Find active script line index
+  // Find active script line index scaled to actual duration
+  const durationScale = duration > 0 ? duration / 19 : 1;
   const activeLineIndex = SCRIPT_LINES.findIndex(
-    (line) => currentTime >= line.startTime && currentTime < line.endTime
+    (line) =>
+      currentTime >= line.startTime * durationScale &&
+      currentTime < line.endTime * durationScale
   );
   const currentLineIdx = activeLineIndex !== -1 ? activeLineIndex : 0;
 
@@ -54,6 +59,7 @@ export default function App() {
       style?: string;
       pace?: string;
       script?: string;
+      targetDuration?: string | number;
     }) => {
       setIsGenerating(true);
       setErrorMessage(null);
@@ -66,6 +72,12 @@ export default function App() {
       const scriptToUse = config?.script || EXACT_URDU_SCRIPT;
       const paceToUse = config?.pace || 'moderately fast';
       const styleToUse = config?.style || voiceObj.sampleStyle;
+      const targetDurationToUse =
+        config?.targetDuration !== undefined ? config.targetDuration : targetDuration;
+
+      if (config?.targetDuration !== undefined) {
+        setTargetDuration(config.targetDuration);
+      }
 
       setStatusMessage(
         `Recording Pakistani Urdu voice-over with ${voiceObj.name} using ${modelToUse}...`
@@ -84,6 +96,7 @@ export default function App() {
             model: modelToUse,
             pace: paceToUse,
             style: styleToUse,
+            targetDuration: targetDurationToUse,
           }),
         });
 
@@ -282,7 +295,9 @@ export default function App() {
           voiceUsed={`${activeVoiceObj.name} (${activeVoiceObj.accent})`}
           onTimeUpdate={handleTimeUpdate}
           onSeekRequest={handleSeekRequest}
-          targetDuration={19}
+          targetDuration={typeof targetDuration === 'number' ? targetDuration : duration}
+          playbackRate={playbackRate}
+          onPlaybackRateChange={setPlaybackRate}
         />
 
         {/* Studio Navigation Tabs */}
@@ -308,7 +323,7 @@ export default function App() {
             }`}
           >
             <Video className="w-4 h-4" />
-            <span>19s Video Reel & Daraz Mockup</span>
+            <span>Video Reel & Daraz Mockup</span>
           </button>
 
           <button
@@ -320,7 +335,7 @@ export default function App() {
             }`}
           >
             <Layers className="w-4 h-4" />
-            <span>19s Storyboard & Timing</span>
+            <span>Storyboard & Timing</span>
           </button>
 
           <button
@@ -349,6 +364,11 @@ export default function App() {
                 onModelChange={handleModelChange}
                 activeLineIndex={currentLineIdx}
                 onLineClick={(time) => handleSeekRequest(time)}
+                audioBase64={audioBase64}
+                mimeType={mimeType}
+                playbackRate={playbackRate}
+                onPlaybackRateChange={setPlaybackRate}
+                duration={duration}
               />
             </div>
 
@@ -358,7 +378,7 @@ export default function App() {
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
                     <h4 className="font-bold text-xs sm:text-sm text-white">
-                      Live 19s Ad Reel Visualizer
+                      Live Ad Reel Visualizer
                     </h4>
                   </div>
                   <span className="text-[11px] font-mono text-amber-400">

@@ -30,10 +30,11 @@ function getGeminiClient() {
   });
 }
 
-// Generate simple clean 24kHz mono PCM WAV header & data as fallback audio
+// Generate clean 24kHz mono PCM WAV header & data as fallback audio
 function generateSyntheticWavPreview(durationSeconds = 19): string {
+  const safeDuration = Math.max(2, Math.min(180, durationSeconds));
   const sampleRate = 24000;
-  const numSamples = Math.floor(sampleRate * durationSeconds);
+  const numSamples = Math.floor(sampleRate * safeDuration);
   const blockAlign = 2; // 16-bit mono
   const byteRate = sampleRate * blockAlign;
   const dataSize = numSamples * blockAlign;
@@ -54,22 +55,22 @@ function generateSyntheticWavPreview(durationSeconds = 19): string {
   buffer.write('data', 36);
   buffer.writeUInt32LE(dataSize, 40);
 
-  // Generate harmonious melodic vocal-like tones matching the 4 script segments
-  // 0-4s: Hook (Warm opening)
-  // 4-10s: Features (Upbeat presentation)
-  // 10-15s: Convenience (Smooth cadence)
-  // 15-19s: Call-to-action (Punchy finale)
+  // Dynamic segment transitions scaled proportionally to safeDuration
+  const s1 = safeDuration * 0.22;
+  const s2 = safeDuration * 0.55;
+  const s3 = safeDuration * 0.78;
+
   for (let i = 0; i < numSamples; i++) {
     const t = i / sampleRate;
     let freq = 220; // default base
     let amp = 0.25;
 
     // Segment frequency transitions
-    if (t < 4.2) {
+    if (t < s1) {
       freq = 240 + Math.sin(t * 4) * 30; // Hook modulation
-    } else if (t < 10.5) {
+    } else if (t < s2) {
       freq = 270 + Math.sin(t * 6) * 45; // Features
-    } else if (t < 15.0) {
+    } else if (t < s3) {
       freq = 250 + Math.cos(t * 5) * 35; // Convenience
     } else {
       freq = 300 + Math.sin(t * 8) * 50; // CTA
@@ -83,7 +84,7 @@ function generateSyntheticWavPreview(durationSeconds = 19): string {
     // Smooth fade in & out
     let envelope = 1;
     if (t < 0.2) envelope = t / 0.2;
-    if (t > durationSeconds - 0.4) envelope = Math.max(0, (durationSeconds - t) / 0.4);
+    if (t > safeDuration - 0.4) envelope = Math.max(0, (safeDuration - t) / 0.4);
 
     const intVal = Math.floor(sampleVal * amp * syllablePulse * envelope * 24000);
     const clamped = Math.max(-32767, Math.min(32767, intVal));
@@ -91,6 +92,17 @@ function generateSyntheticWavPreview(durationSeconds = 19): string {
   }
 
   return buffer.toString('base64');
+}
+
+// Calculate estimated speech duration from Urdu text (~2.5 words per second)
+function calculateEstimatedDuration(text: string, targetDuration?: any): number {
+  if (targetDuration && targetDuration !== 'auto' && !isNaN(Number(targetDuration))) {
+    const parsed = Number(targetDuration);
+    if (parsed > 0) return parsed;
+  }
+  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+  // Natural pace for Urdu commercial is ~2.3 - 2.8 words/sec
+  return Math.max(3, Math.min(180, Math.round(wordCount / 2.5)));
 }
 
 // In-memory audio cache to prevent redundant quota usage
@@ -103,8 +115,14 @@ async function requestGeminiAudio(
   prebuiltVoiceName: string,
   scriptText: string,
   style: string,
-  pace: string
+  pace: string,
+  targetDuration?: any
 ): Promise<string> {
+  const durationDirective =
+    targetDuration && targetDuration !== 'auto' && !isNaN(Number(targetDuration)) && Number(targetDuration) > 0
+      ? ` Target duration: approximately ${targetDuration} seconds.`
+      : '';
+
   const response = await ai.models.generateContent({
     model: modelName,
     contents: [
@@ -115,7 +133,7 @@ async function requestGeminiAudio(
             text: scriptText,
             speechMetadata: {
               speaker: prebuiltVoiceName,
-              style: `${style}. Pacing: ${pace}. Target duration: ~19 seconds. Authentic Pakistani Urdu accent and natural flow.`,
+              style: `${style}. Pacing: ${pace}.${durationDirective} Authentic Pakistani Urdu accent and natural flow.`,
             },
           },
         ],
@@ -151,6 +169,7 @@ app.post('/api/tts', async (req, res) => {
     model = 'gemini-3.8-flash-tts',
     style = 'Natural, warm, enthusiastic female Pakistani Urdu voice with authentic Karachi conversational pacing.',
     pace = 'moderately fast',
+    targetDuration,
   } = req.body;
 
   const scriptText = script || `اب دفتر ہو یا سفر، کھانا رہے گرم اور تازہ!
@@ -158,8 +177,10 @@ app.post('/api/tts', async (req, res) => {
 بس پاور سے کنیکٹ کریں اور اپنے کھانے کو گرم کرنے کی سہولت پائیں۔
 آج ہی آرڈر کریں ڈی کارٹ سے!`;
 
+  const fallbackDurationSeconds = calculateEstimatedDuration(scriptText, targetDuration);
+
   // Check cache first to save quota
-  const cacheKey = `${voice}_${scriptText.trim()}`;
+  const cacheKey = `${voice}_${targetDuration || 'auto'}_${scriptText.trim()}`;
   if (audioCache.has(cacheKey)) {
     console.log(`[TTS Cache] Serving cached audio for ${voice}`);
     const cached = audioCache.get(cacheKey)!;
@@ -187,15 +208,15 @@ app.post('/api/tts', async (req, res) => {
   const ai = getGeminiClient();
 
   if (!ai) {
-    console.warn('GEMINI_API_KEY not configured. Generating preview studio audio.');
-    const base64Audio = generateSyntheticWavPreview(19);
+    console.warn(`GEMINI_API_KEY not configured. Generating preview studio audio (${fallbackDurationSeconds}s).`);
+    const base64Audio = generateSyntheticWavPreview(fallbackDurationSeconds);
     return res.json({
       success: true,
       source: 'preview_synthesizer',
       mimeType: 'audio/wav',
       audioBase64: base64Audio,
       model: chosenModel,
-      message: 'Generated studio preview (configure GEMINI_API_KEY in Secrets for live Gemini TTS)',
+      message: `Generated studio preview (${fallbackDurationSeconds}s). Configure GEMINI_API_KEY for live Gemini TTS.`,
       voiceUsed: voice,
       scriptLength: scriptText.length,
     });
@@ -206,14 +227,15 @@ app.post('/api/tts', async (req, res) => {
   let fallbackNotice: string | null = null;
 
   try {
-    console.log(`[TTS] Requesting voice-over from ${chosenModel} with voice: ${prebuiltVoiceName} (${voice})`);
+    console.log(`[TTS] Requesting voice-over from ${chosenModel} with voice: ${prebuiltVoiceName} (${voice}), targetDuration: ${targetDuration || 'auto'}`);
     finalBase64Audio = await requestGeminiAudio(
       ai,
       chosenModel,
       prebuiltVoiceName,
       scriptText,
       style,
-      pace
+      pace,
+      targetDuration
     );
   } catch (primaryErr: any) {
     console.warn(`[TTS Primary Warning] ${chosenModel} error:`, primaryErr?.message);
@@ -233,7 +255,8 @@ app.post('/api/tts', async (req, res) => {
           prebuiltVoiceName,
           scriptText,
           style,
-          pace
+          pace,
+          targetDuration
         );
         fallbackNotice = 'Primary Flash TTS daily quota reached (10 requests/day). Auto-switched to Flash-Lite TTS.';
       } catch (secondaryErr: any) {
@@ -264,8 +287,8 @@ app.post('/api/tts', async (req, res) => {
   }
 
   // If both models were quota exhausted or unavailable, generate high-quality 24kHz studio preview
-  console.log('[TTS Graceful Preview] Free tier quota reached, serving studio preview audio.');
-  const fallbackAudio = generateSyntheticWavPreview(19);
+  console.log(`[TTS Graceful Preview] Free tier quota reached, serving studio preview audio (${fallbackDurationSeconds}s).`);
+  const fallbackAudio = generateSyntheticWavPreview(fallbackDurationSeconds);
 
   return res.status(200).json({
     success: true,

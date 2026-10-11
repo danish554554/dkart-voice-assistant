@@ -37,9 +37,10 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [likeCount, setLikeCount] = useState<number>(14200);
 
-  // Find active line based on currentTime
+  // Find active line based on currentTime scaled to actual duration
+  const durationScale = duration > 0 ? duration / 19 : 1;
   const activeLine = SCRIPT_LINES.find(
-    (line) => currentTime >= line.startTime && currentTime < line.endTime
+    (line) => currentTime >= line.startTime * durationScale && currentTime < line.endTime * durationScale
   ) || SCRIPT_LINES[0];
 
   const handleLike = (e: React.MouseEvent) => {
@@ -48,7 +49,7 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
     setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
   };
 
-  const progressPercent = duration > 0 ? Math.min(100, (currentTime / (duration || 19)) * 100) : 0;
+  const progressPercent = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   return (
     <div className="flex flex-col items-center">
@@ -125,7 +126,7 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
 
             <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] text-amber-300 font-mono">
               <Clock className="w-3 h-3 text-amber-400" />
-              <span>{currentTime.toFixed(1)}s / 19.0s</span>
+              <span>{currentTime.toFixed(1)}s / {(duration || 19).toFixed(1)}s</span>
             </div>
           </div>
 

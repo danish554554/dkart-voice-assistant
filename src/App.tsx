@@ -187,6 +187,7 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Hero Banner with Product Context */}
+        {/* Universal Studio Header Banner */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-rose-950/40 border border-slate-800 p-6 shadow-2xl">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
 
@@ -205,54 +206,54 @@ export default function App() {
                   Model: {selectedModel}
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-                  19s Target Reel
+                  {playbackRate}x Export Speed
                 </span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                Electric Lunch Box Food Warmer (40W)
+                Pakistani Urdu Voice-Over Studio
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-400 to-orange-400">
-                  Pakistani Urdu Commercial Voice Studio
+                  AI Commercial & Social Reels Production
                 </span>
               </h1>
 
               <p className="text-sm text-slate-300 leading-relaxed">
-                Studio-grade commercial voice-over for Daraz, TikTok, and Instagram Reels. Featuring 5 native Pakistani female voice artists with authentic regional accents (Karachi, Lahore, Islamabad) and dual Gemini TTS models. Pronunciations: <strong className="text-amber-300 font-urdu font-bold">چالیس واٹ</strong> (40W) & <strong className="text-amber-300 font-urdu font-bold">ڈی کارٹ</strong> (D-Kart).
+                Universal studio-grade Urdu text-to-speech for any e-commerce product, Daraz campaign, TikTok ads, or Instagram reels. Featuring native Pakistani regional accents (Karachi, Lahore, Islamabad, Influencer, FM Radio) powered by Google Gemini TTS.
               </p>
             </div>
 
-            {/* Quick Product Specs Box */}
+            {/* Studio Capabilities Overview */}
             <div className="grid grid-cols-2 gap-3 w-full lg:w-auto shrink-0 text-xs">
               <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
                 <div className="flex items-center gap-1.5 text-amber-400 font-bold mb-1">
                   <Flame className="w-4 h-4" />
-                  <span>40W Fast Heat</span>
+                  <span>Gemini 3.8 TTS</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">PTC Food Warmer</p>
+                <p className="text-slate-400 text-[11px]">24kHz Broadcast Audio</p>
               </div>
 
               <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
                 <div className="flex items-center gap-1.5 text-emerald-400 font-bold mb-1">
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>SS-304 Tray</span>
+                  <span>5+ Native Accents</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Stainless Steel 1.5L</p>
+                <p className="text-slate-400 text-[11px]">Karachi, Lahore, Capital</p>
               </div>
 
               <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
                 <div className="flex items-center gap-1.5 text-indigo-400 font-bold mb-1">
                   <Zap className="w-4 h-4" />
-                  <span>220V + 12V</span>
+                  <span>0.5x – 2.0x Speed</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Office & Travel Car</p>
+                <p className="text-slate-400 text-[11px]">Exact .WAV Export Render</p>
               </div>
 
               <div className="p-3 rounded-2xl bg-slate-950/80 border border-slate-800">
                 <div className="flex items-center gap-1.5 text-rose-400 font-bold mb-1">
                   <Clock className="w-4 h-4" />
-                  <span>~19 Seconds</span>
+                  <span>9:16 Video Sync</span>
                 </div>
-                <p className="text-slate-400 text-[11px]">Exact Video Sync</p>
+                <p className="text-slate-400 text-[11px]">Daraz & TikTok Mockup</p>
               </div>
             </div>
           </div>

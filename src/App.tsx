@@ -195,71 +195,71 @@ export default function App() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* Universal Studio Header Banner */}
-        <div className="relative overflow-hidden rounded-3xl bg-white border border-zinc-200 p-6 shadow-sm">
+        {/* Universal Studio Header Banner (Black background with white writing and white button-style cards with black text) */}
+        <div className="relative overflow-hidden rounded-3xl bg-black border border-zinc-900 p-6 sm:p-8 shadow-md">
           <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
+            <div className="space-y-3 max-w-2xl">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-900 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-xs">
-                  <Mic className="w-3.5 h-3.5 text-zinc-900" />
+                <span className="px-3 py-1.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                  <Mic className="w-3.5 h-3.5 text-black" />
                   Voice: {activeVoiceObj.name} • {activeVoiceObj.accent}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-800 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
-                  <Radio className="w-3.5 h-3.5 text-zinc-900 animate-pulse" />
+                <span className="px-3 py-1.5 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                  <Radio className="w-3.5 h-3.5 text-black animate-pulse" />
                   Commercial Studio
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-zinc-100 text-zinc-800 font-mono text-xs border border-zinc-200">
+                <span className="px-3 py-1.5 rounded-xl bg-white text-black font-mono text-xs font-semibold shadow-sm">
                   Model: {selectedModel}
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-black text-white text-xs font-semibold">
+                <span className="px-3 py-1.5 rounded-xl bg-zinc-800 text-white border border-zinc-700 text-xs font-semibold">
                   {playbackRate}x Export Speed
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-zinc-900 tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
                 Pakistani Urdu Voice-Over Studio
-                <span className="block text-zinc-500 font-bold">
+                <span className="block text-zinc-400 font-bold">
                   AI Commercial & Social Reels Production
                 </span>
               </h1>
 
-              <p className="text-sm text-zinc-600 leading-relaxed">
+              <p className="text-sm text-zinc-300 leading-relaxed">
                 Universal studio-grade Urdu text-to-speech for any e-commerce product, Daraz campaign, TikTok ads, or Instagram reels. Featuring native Pakistani regional accents (Karachi, Lahore, Islamabad, Influencer, FM Radio) powered by Google Gemini TTS.
               </p>
             </div>
 
-            {/* Studio Capabilities Overview */}
+            {/* Studio Capabilities Overview (White Buttons with Black Text) */}
             <div className="grid grid-cols-2 gap-3 w-full lg:w-auto shrink-0 text-xs">
-              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
-                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
-                  <Flame className="w-4 h-4 text-zinc-900" />
+              <div className="p-3.5 rounded-2xl bg-white text-black shadow-md border border-white hover:bg-zinc-100 transition-colors">
+                <div className="flex items-center gap-1.5 text-black font-extrabold mb-1">
+                  <Flame className="w-4 h-4 text-black" />
                   <span>Gemini 3.8 TTS</span>
                 </div>
-                <p className="text-zinc-500 text-[11px]">24kHz Broadcast Audio</p>
+                <p className="text-zinc-600 text-[11px] font-medium">24kHz Broadcast Audio</p>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
-                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
-                  <CheckCircle2 className="w-4 h-4 text-zinc-900" />
+              <div className="p-3.5 rounded-2xl bg-white text-black shadow-md border border-white hover:bg-zinc-100 transition-colors">
+                <div className="flex items-center gap-1.5 text-black font-extrabold mb-1">
+                  <CheckCircle2 className="w-4 h-4 text-black" />
                   <span>5+ Native Accents</span>
                 </div>
-                <p className="text-zinc-500 text-[11px]">Karachi, Lahore, Capital</p>
+                <p className="text-zinc-600 text-[11px] font-medium">Karachi, Lahore, Capital</p>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
-                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
-                  <Zap className="w-4 h-4 text-zinc-900" />
+              <div className="p-3.5 rounded-2xl bg-white text-black shadow-md border border-white hover:bg-zinc-100 transition-colors">
+                <div className="flex items-center gap-1.5 text-black font-extrabold mb-1">
+                  <Zap className="w-4 h-4 text-black" />
                   <span>0.5x – 2.0x Speed</span>
                 </div>
-                <p className="text-zinc-500 text-[11px]">Exact .WAV Export Render</p>
+                <p className="text-zinc-600 text-[11px] font-medium">Exact .WAV Export Render</p>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200">
-                <div className="flex items-center gap-1.5 text-zinc-900 font-bold mb-1">
-                  <Clock className="w-4 h-4 text-zinc-900" />
+              <div className="p-3.5 rounded-2xl bg-white text-black shadow-md border border-white hover:bg-zinc-100 transition-colors">
+                <div className="flex items-center gap-1.5 text-black font-extrabold mb-1">
+                  <Clock className="w-4 h-4 text-black" />
                   <span>9:16 Video Sync</span>
                 </div>
-                <p className="text-zinc-500 text-[11px]">Daraz & TikTok Mockup</p>
+                <p className="text-zinc-600 text-[11px] font-medium">Daraz & TikTok Mockup</p>
               </div>
             </div>
           </div>

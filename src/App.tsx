@@ -354,44 +354,96 @@ export default function App() {
 
         {/* Tab 1: Studio Mode */}
         {activeTab === 'studio' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7">
-              <ScriptSection
-                onGenerate={(config) => generateVoiceOver(config)}
-                isGenerating={isGenerating}
-                selectedVoice={selectedVoice}
-                onVoiceChange={handleVoiceChange}
-                selectedModel={selectedModel}
-                onModelChange={handleModelChange}
-                activeLineIndex={currentLineIdx}
-                onLineClick={(time) => handleSeekRequest(time)}
-                audioBase64={audioBase64}
-                mimeType={mimeType}
-                playbackRate={playbackRate}
-                onPlaybackRateChange={setPlaybackRate}
-                duration={duration}
-              />
-            </div>
+          <div className="space-y-8">
+            {/* Full-width Workspace: Horizontal Script Editor & Voice Settings/Buttons */}
+            <ScriptSection
+              onGenerate={(config) => generateVoiceOver(config)}
+              isGenerating={isGenerating}
+              selectedVoice={selectedVoice}
+              onVoiceChange={handleVoiceChange}
+              selectedModel={selectedModel}
+              onModelChange={handleModelChange}
+              activeLineIndex={currentLineIdx}
+              onLineClick={(time) => handleSeekRequest(time)}
+              audioBase64={audioBase64}
+              mimeType={mimeType}
+              playbackRate={playbackRate}
+              onPlaybackRateChange={setPlaybackRate}
+              duration={duration}
+            />
 
-            <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="w-full bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex flex-col items-center shadow-xl">
-                <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
-                    <h4 className="font-bold text-xs sm:text-sm text-white">
-                      Live Ad Reel Visualizer
-                    </h4>
+            {/* Live Synchronized Reel Preview & Scene Storyboard */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="w-full bg-slate-900/60 border border-slate-800 rounded-3xl p-5 flex flex-col items-center shadow-xl">
+                  <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                      <h4 className="font-bold text-xs sm:text-sm text-white">
+                        Live 9:16 Ad Reel Visualizer
+                      </h4>
+                    </div>
+                    <span className="text-[11px] font-mono text-amber-400">
+                      Sync: {currentTime.toFixed(1)}s / {duration.toFixed(1)}s
+                    </span>
                   </div>
-                  <span className="text-[11px] font-mono text-amber-400">
-                    Sync: {currentTime.toFixed(1)}s
-                  </span>
-                </div>
 
-                <ReelPreview
-                  currentTime={currentTime}
-                  duration={duration}
-                  voiceName={activeVoiceObj.name}
-                />
+                  <ReelPreview
+                    currentTime={currentTime}
+                    duration={duration}
+                    voiceName={activeVoiceObj.name}
+                  />
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 space-y-4">
+                <div className="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 shadow-xl space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <Layers className="w-4 h-4 text-amber-400" />
+                      <h4 className="font-bold text-white text-sm">
+                        Live Scene Timing & Playback Sync
+                      </h4>
+                    </div>
+                    <span className="text-xs text-slate-400 font-mono">
+                      {SCRIPT_LINES.length} Acts Breakdown
+                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    {SCRIPT_LINES.map((line) => {
+                      const isSpoken = currentTime >= line.startTime && currentTime < line.endTime;
+                      return (
+                        <div
+                          key={line.id}
+                          onClick={() => handleSeekRequest(line.startTime)}
+                          className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
+                            isSpoken
+                              ? 'bg-amber-500/10 border-amber-500/60 shadow-md shadow-amber-500/10 ring-1 ring-amber-500/40'
+                              : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 hover:bg-slate-950'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between text-xs pb-1">
+                            <span className="font-bold text-amber-400">
+                              Act 0{line.id}: {line.role} ({line.startTime}s - {line.endTime}s)
+                            </span>
+                            {isSpoken && (
+                              <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-full font-bold animate-pulse">
+                                SPEAKING NOW
+                              </span>
+                            )}
+                          </div>
+                          <p className="font-urdu text-lg font-bold text-right text-amber-200">
+                            {line.urdu}
+                          </p>
+                          <p className="text-xs text-slate-400 mt-1 italic">
+                            "{line.roman}"
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -23,6 +23,7 @@ import { SpecsSection } from './components/SpecsSection';
 import { SCRIPT_LINES, EXACT_URDU_SCRIPT, VOICE_OPTIONS } from './data/commercialData';
 
 export default function App() {
+  const [scriptText, setScriptText] = useState<string>('');
   const [audioBase64, setAudioBase64] = useState<string | null>(null);
   const [mimeType, setMimeType] = useState<string>('audio/wav');
   const [modelName, setModelName] = useState<string>('gemini-3.8-flash-tts');
@@ -61,6 +62,14 @@ export default function App() {
       script?: string;
       targetDuration?: string | number;
     }) => {
+      const scriptToUse = config?.script !== undefined ? config.script : scriptText;
+
+      // Ensure user has provided a script before generating voice
+      if (!scriptToUse || !scriptToUse.trim()) {
+        setErrorMessage('Please enter or paste your Urdu script first before converting to speech.');
+        return;
+      }
+
       setIsGenerating(true);
       setErrorMessage(null);
 
@@ -69,7 +78,6 @@ export default function App() {
       const voiceObj =
         VOICE_OPTIONS.find((v) => v.id === voiceToUse) || activeVoiceObj;
       const baseVoiceToUse = config?.baseVoice || voiceObj.baseVoice;
-      const scriptToUse = config?.script || EXACT_URDU_SCRIPT;
       const paceToUse = config?.pace || 'moderately fast';
       const styleToUse = config?.style || voiceObj.sampleStyle;
       const targetDurationToUse =
@@ -144,13 +152,8 @@ export default function App() {
         setIsGenerating(false);
       }
     },
-    [selectedVoice, selectedModel, activeVoiceObj]
+    [selectedVoice, selectedModel, activeVoiceObj, scriptText, targetDuration]
   );
-
-  // Auto-generate initial studio audio on mount
-  useEffect(() => {
-    generateVoiceOver();
-  }, []);
 
   const handleTimeUpdate = (cur: number, dur: number) => {
     setCurrentTime(cur);
@@ -165,13 +168,19 @@ export default function App() {
 
   const handleVoiceChange = (voiceId: string, baseVoice?: string, defaultStyle?: string) => {
     setSelectedVoice(voiceId);
-    generateVoiceOver({ voice: voiceId, baseVoice, style: defaultStyle });
+    // Only re-generate automatically if audio has already been created previously
+    if (audioBase64 && scriptText.trim()) {
+      generateVoiceOver({ voice: voiceId, baseVoice, style: defaultStyle });
+    }
   };
 
   const handleModelChange = (modelId: string) => {
     setSelectedModel(modelId);
     setModelName(modelId);
-    generateVoiceOver({ model: modelId });
+    // Only re-generate automatically if audio has already been created previously
+    if (audioBase64 && scriptText.trim()) {
+      generateVoiceOver({ model: modelId });
+    }
   };
 
   return (
@@ -284,20 +293,6 @@ export default function App() {
           </div>
         )}
 
-        {/* Master Audio Player & Waveform Visualizer */}
-        <AudioPlayer
-          audioBase64={audioBase64}
-          mimeType={mimeType}
-          source={source}
-          model={selectedModel}
-          voiceUsed={`${activeVoiceObj.name} (${activeVoiceObj.accent})`}
-          onTimeUpdate={handleTimeUpdate}
-          onSeekRequest={handleSeekRequest}
-          targetDuration={typeof targetDuration === 'number' ? targetDuration : duration}
-          playbackRate={playbackRate}
-          onPlaybackRateChange={setPlaybackRate}
-        />
-
         {/* Studio Navigation Tabs */}
         <div className="flex items-center gap-2 border-b border-zinc-200 pb-2 overflow-x-auto">
           <button
@@ -352,7 +347,7 @@ export default function App() {
         {/* Tab 1: Studio Mode */}
         {activeTab === 'studio' && (
           <div className="space-y-8">
-            {/* Full-width Workspace: Horizontal Script Editor & Voice Settings/Buttons */}
+            {/* Full-width Workspace: Horizontal Script Editor & Voice Settings/Buttons + Audio Player */}
             <ScriptSection
               onGenerate={(config) => generateVoiceOver(config)}
               isGenerating={isGenerating}
@@ -364,9 +359,15 @@ export default function App() {
               onLineClick={(time) => handleSeekRequest(time)}
               audioBase64={audioBase64}
               mimeType={mimeType}
+              source={source}
               playbackRate={playbackRate}
               onPlaybackRateChange={setPlaybackRate}
               duration={duration}
+              targetDuration={typeof targetDuration === 'number' ? targetDuration : duration}
+              onTimeUpdate={handleTimeUpdate}
+              onSeekRequest={handleSeekRequest}
+              scriptText={scriptText}
+              onScriptTextChange={setScriptText}
             />
 
             {/* Live Synchronized Reel Preview & Scene Storyboard */}

@@ -26,6 +26,7 @@ import { SCRIPT_LINES, VOICE_OPTIONS, MODEL_OPTIONS, EXACT_URDU_SCRIPT } from '.
 import { VoiceOption } from '../types';
 import { ExportModal } from './ExportModal';
 import { exportAudioAtSpeed } from '../utils/audioExport';
+import { AudioPlayer } from './AudioPlayer';
 
 interface ScriptSectionProps {
   onGenerate: (config: {
@@ -46,9 +47,15 @@ interface ScriptSectionProps {
   onLineClick?: (startTime: number) => void;
   audioBase64?: string | null;
   mimeType?: string;
+  source?: string;
   playbackRate?: number;
   onPlaybackRateChange?: (rate: number) => void;
   duration?: number;
+  targetDuration?: number;
+  onTimeUpdate?: (currentTime: number, duration: number) => void;
+  onSeekRequest?: (time: number) => void;
+  scriptText?: string;
+  onScriptTextChange?: (text: string) => void;
 }
 
 export const ScriptSection: React.FC<ScriptSectionProps> = ({
@@ -62,11 +69,29 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
   onLineClick,
   audioBase64,
   mimeType = 'audio/wav',
+  source = 'gemini-3.8-flash-tts',
   playbackRate = 1.0,
   onPlaybackRateChange,
   duration = 19,
+  targetDuration = 19,
+  onTimeUpdate,
+  onSeekRequest,
+  scriptText: propScriptText,
+  onScriptTextChange,
 }) => {
-  const [scriptText, setScriptText] = useState<string>(EXACT_URDU_SCRIPT);
+  const [internalScriptText, setInternalScriptText] = useState<string>('');
+  const scriptText = propScriptText !== undefined ? propScriptText : internalScriptText;
+  const setScriptText = (text: string | ((prev: string) => string)) => {
+    if (typeof text === 'function') {
+      const next = text(scriptText);
+      if (onScriptTextChange) onScriptTextChange(next);
+      setInternalScriptText(next);
+    } else {
+      if (onScriptTextChange) onScriptTextChange(text);
+      setInternalScriptText(text);
+    }
+  };
+
   const [scriptView, setScriptView] = useState<'editor' | 'breakdown'>('editor');
   const [copied, setCopied] = useState<boolean>(false);
   const [showExportModal, setShowExportModal] = useState<boolean>(false);
@@ -115,6 +140,11 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
   };
 
   const handleTriggerGenerate = () => {
+    if (!scriptText.trim()) {
+      alert('Please enter or paste your Urdu script before converting to speech.');
+      return;
+    }
+
     const finalTarget =
       targetDurationMode === 'auto'
         ? 'auto'
@@ -731,6 +761,36 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Master Audio Player & Waveform Visualizer (Appears right after converting speech) */}
+        {audioBase64 ? (
+          <div className="pt-4 border-t border-zinc-200">
+            <AudioPlayer
+              audioBase64={audioBase64}
+              mimeType={mimeType}
+              source={source}
+              model={selectedModel}
+              voiceUsed={`${currentVoiceObj.name} (${currentVoiceObj.accent})`}
+              onTimeUpdate={onTimeUpdate}
+              onSeekRequest={onSeekRequest}
+              targetDuration={typeof targetDuration === 'number' ? targetDuration : duration}
+              playbackRate={playbackRate}
+              onPlaybackRateChange={onPlaybackRateChange}
+            />
+          </div>
+        ) : (
+          <div className="pt-3 border-t border-zinc-200 flex items-center justify-between text-xs text-zinc-500 bg-zinc-50 p-3.5 rounded-xl border">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-zinc-400" />
+              <span>
+                Enter your script above and click <strong className="text-zinc-900 font-bold">"CONVERT TO SPEECH"</strong> to generate the Pakistani Urdu voice-over waveform and audio player.
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-zinc-400 hidden sm:inline">
+              Ready for Urdu Text
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Export & Deployment Modal */}

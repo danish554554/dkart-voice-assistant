@@ -20,6 +20,7 @@ import {
   FileText,
   Volume1,
   Radio,
+  FileAudio,
 } from 'lucide-react';
 import { SCRIPT_LINES, VOICE_OPTIONS, MODEL_OPTIONS, EXACT_URDU_SCRIPT } from '../data/commercialData';
 import { VoiceOption } from '../types';

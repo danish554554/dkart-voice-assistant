@@ -187,8 +187,6 @@ export default function App() {
     <div className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Top Studio Navbar */}
       <Navbar
-        onQuickGenerate={() => generateVoiceOver()}
-        isGenerating={isGenerating}
         modelName={selectedModel}
         voiceName={activeVoiceObj.name}
       />

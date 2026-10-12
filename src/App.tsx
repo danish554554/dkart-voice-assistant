@@ -338,7 +338,7 @@ export default function App() {
             }`}
           >
             <FileText className="w-4 h-4" />
-            <span>Product Tech Sheet & QC</span>
+            <span>Audio Specifications & QC</span>
           </button>
         </div>
 

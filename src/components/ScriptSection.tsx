@@ -354,14 +354,14 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
         <div className="mt-2 p-3 rounded-xl bg-zinc-50 border border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-zinc-900 font-semibold">
             <Info className="w-4 h-4 text-zinc-900 shrink-0" />
-            <span>Pakistani Urdu Pronunciation Rules:</span>
+            <span>Pakistani Urdu Pronunciation Tips:</span>
           </div>
           <div className="flex flex-wrap items-center gap-2 text-zinc-700">
             <span className="px-2 py-0.5 rounded bg-white border border-zinc-200 font-mono text-[11px]">
-              40W → <strong className="text-zinc-950">چالیس واٹ</strong>
+              Brand Names → <strong className="text-zinc-950">اردو رسم الخط (e.g. ڈی کارٹ)</strong>
             </span>
             <span className="px-2 py-0.5 rounded bg-white border border-zinc-200 font-mono text-[11px]">
-              D-Kart → <strong className="text-zinc-950">ڈی کارٹ</strong>
+              Natural Pauses → <strong className="text-zinc-950">، اور ۔ استعمال کریں</strong>
             </span>
             <span className="px-2 py-0.5 rounded bg-white border border-zinc-200 font-mono text-[11px]">
               Model: <strong className="text-zinc-950">{selectedModel}</strong>

@@ -54,13 +54,13 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
   return (
     <div className="flex flex-col items-center">
       {/* Platform Switcher */}
-      <div className="flex items-center gap-1.5 p-1 bg-zinc-100 border border-zinc-200 rounded-xl mb-4 text-xs font-semibold">
+      <div className="flex items-center gap-1.5 p-1 bg-[#181820] border border-[#252535] rounded-xl mb-4 text-xs font-semibold">
         <button
           onClick={() => setPlatform('daraz')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'daraz'
-              ? 'bg-black text-white font-bold shadow-xs'
-              : 'text-zinc-600 hover:text-black'
+              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
+              : 'text-[#888896] hover:text-[#ededee]'
           }`}
         >
           <ShoppingBag className="w-3.5 h-3.5" />
@@ -71,8 +71,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('tiktok')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'tiktok'
-              ? 'bg-black text-white font-bold shadow-xs'
-              : 'text-zinc-600 hover:text-black'
+              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
+              : 'text-[#888896] hover:text-[#ededee]'
           }`}
         >
           <Music2 className="w-3.5 h-3.5" />
@@ -83,8 +83,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('instagram')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'instagram'
-              ? 'bg-black text-white font-bold shadow-xs'
-              : 'text-zinc-600 hover:text-black'
+              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
+              : 'text-[#888896] hover:text-[#ededee]'
           }`}
         >
           <Sparkles className="w-3.5 h-3.5" />
@@ -288,23 +288,23 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
             </div>
 
             {/* E-Commerce Buy Bar */}
-            <div className="flex items-center justify-between gap-2 bg-white p-2 rounded-xl text-black font-bold shadow-md border border-zinc-200">
+            <div className="flex items-center justify-between gap-2 bg-[#181820] p-2 rounded-xl text-white font-bold shadow-md border border-[#2b2b3c]">
               <div className="flex flex-col">
-                <span className="text-[9px] uppercase tracking-wider text-zinc-600 font-black">
+                <span className="text-[9px] uppercase tracking-wider text-[#888896] font-black">
                   ڈی کارٹ ڈسکاؤنٹ آفر
                 </span>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-extrabold text-black">Rs. 2,999</span>
-                  <span className="text-[10px] line-through text-zinc-400">Rs. 4,999</span>
-                  <span className="text-[9px] bg-black text-white px-1 rounded font-bold">
+                  <span className="text-sm font-extrabold text-[#ededee]">Rs. 2,999</span>
+                  <span className="text-[10px] line-through text-zinc-500">Rs. 4,999</span>
+                  <span className="text-[9px] bg-[#8ab4f8]/20 text-[#8ab4f8] border border-[#8ab4f8]/30 px-1 rounded font-bold">
                     -40%
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 px-3 py-1.5 bg-black text-white rounded-lg text-xs font-black shadow-sm transition-colors">
+              <div className="flex items-center gap-1 px-3 py-1.5 bg-[#8ab4f8] hover:bg-[#689ef7] text-slate-950 rounded-lg text-xs font-black shadow-sm transition-colors cursor-pointer">
                 <span>آرڈر کریں</span>
-                <ExternalLink className="w-3 h-3 text-white" />
+                <ExternalLink className="w-3 h-3 text-slate-950" />
               </div>
             </div>
           </div>

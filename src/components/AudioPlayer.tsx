@@ -180,7 +180,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   ];
 
   return (
-    <div className="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm text-zinc-900">
+    <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-xl text-[#e2e2e8]">
       <audio
         ref={audioRef}
         onPlay={() => setIsPlaying(true)}
@@ -191,22 +191,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       />
 
       {/* Header Info */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-zinc-200">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#252535]">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-900">
-            <Radio className="w-5 h-5 animate-pulse text-zinc-900" />
+          <div className="w-9 h-9 rounded-xl bg-[#22222f] border border-[#303042] flex items-center justify-center text-[#8ab4f8]">
+            <Radio className="w-5 h-5 animate-pulse text-[#8ab4f8]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-bold text-zinc-900 text-sm sm:text-base">
+              <h3 className="font-bold text-[#f2f2f8] text-sm sm:text-base">
                 Urdu Commercial Voice-Over Master
               </h3>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-800 border border-zinc-200">
-                Broadcast Ready
+              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#20202e] text-[#8ab4f8] border border-[#323245]">
+                BROADCAST READY
               </span>
             </div>
-            <p className="text-xs text-zinc-500">
-              Voice: <span className="text-zinc-900 font-medium">{voiceUsed}</span> • Format: 24kHz Unary WAV (Mono 16-Bit) • Model: <span className="font-mono text-zinc-800">{model}</span>
+            <p className="text-xs text-[#808092]">
+              Voice: <span className="text-white font-medium">{voiceUsed}</span> • Format: 24kHz Unary WAV (16-Bit) • Model: <span className="font-mono text-[#8ab4f8]">{model}</span>
             </p>
           </div>
         </div>
@@ -216,13 +216,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             <button
               onClick={handleDownload}
               disabled={isExporting}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-black hover:bg-zinc-800 text-white border border-black text-xs font-semibold transition-all cursor-pointer shadow-sm disabled:opacity-50"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0e0e11] font-mono text-xs font-bold transition-all cursor-pointer shadow-md disabled:opacity-50"
               title={`Download audio rendered at ${internalRate}x speed`}
             >
               {isExporting ? (
-                <Sparkles className="w-3.5 h-3.5 text-white animate-spin" />
+                <Sparkles className="w-3.5 h-3.5 text-[#0e0e11] animate-spin" />
               ) : (
-                <Download className="w-3.5 h-3.5 text-white" />
+                <Download className="w-3.5 h-3.5 text-[#0e0e11]" />
               )}
               <span>{isExporting ? 'Exporting...' : `Download .WAV (${internalRate}x)`}</span>
             </button>
@@ -232,10 +232,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
       {/* Waveform Visualization */}
       <div className="py-4">
-        <div className="h-16 flex items-center justify-between gap-1 px-2 bg-zinc-50 border border-zinc-200 rounded-xl overflow-hidden relative">
+        <div className="h-16 flex items-center justify-between gap-1 px-3 bg-[#121218] border border-[#252535] rounded-xl overflow-hidden relative">
           {/* Target 19s marker overlay */}
-          <div className="absolute right-4 top-1.5 flex items-center gap-1 text-[10px] font-mono text-zinc-700 bg-white px-2 py-0.5 rounded border border-zinc-200 z-10 shadow-xs">
-            <Clock className="w-3 h-3 text-zinc-900" />
+          <div className="absolute right-4 top-1.5 flex items-center gap-1 text-[10px] font-mono text-[#8ab4f8] bg-[#1a1a24] px-2 py-0.5 rounded border border-[#2e2e40] z-10 shadow-xs">
+            <Clock className="w-3 h-3 text-[#8ab4f8]" />
             <span>Target: 19.0s</span>
           </div>
 
@@ -266,8 +266,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                   style={{ height: `${clampedH}%` }}
                   className={`w-full max-w-[6px] rounded-full transition-all duration-75 ${
                     isPassed
-                      ? 'bg-black shadow-xs'
-                      : 'bg-zinc-200 group-hover:bg-zinc-300'
+                      ? 'bg-[#8ab4f8] shadow-sm shadow-[#8ab4f8]/30'
+                      : 'bg-[#252535] group-hover:bg-[#35354a]'
                   }`}
                 />
               </div>
@@ -287,22 +287,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             value={currentTime}
             onChange={handleSeek}
             disabled={!audioBase64}
-            className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-black disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full h-2 bg-[#252535] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
 
-        <div className="flex items-center justify-between text-xs font-mono text-zinc-500">
-          <div className="flex items-center gap-1.5 text-zinc-900 font-semibold">
-            <Clock className="w-3.5 h-3.5 text-zinc-900" />
+        <div className="flex items-center justify-between text-xs font-mono text-[#808092]">
+          <div className="flex items-center gap-1.5 text-[#8ab4f8] font-semibold">
+            <Clock className="w-3.5 h-3.5 text-[#8ab4f8]" />
             <span>{formatTime(currentTime)}</span>
           </div>
           <div className="flex items-center gap-2">
             {targetDuration && targetDuration > 0 && (
-              <span className="text-zinc-400">
-                Commercial Target: {targetDuration.toFixed(2)}s
+              <span className="text-[#606072]">
+                target: {targetDuration.toFixed(2)}s
               </span>
             )}
-            <span className="text-zinc-800 font-medium">
+            <span className="text-[#c0c0d2] font-medium">
               / {formatTime(duration)}
             </span>
           </div>
@@ -310,41 +310,41 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       </div>
 
       {/* Transport Controls */}
-      <div className="mt-4 pt-4 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-4 pt-4 border-t border-[#252535] flex flex-wrap items-center justify-between gap-4">
         {/* Playback Controls */}
         <div className="flex items-center gap-3">
           <button
             onClick={togglePlay}
             disabled={!audioBase64}
-            className="w-12 h-12 rounded-xl bg-black hover:bg-zinc-800 text-white flex items-center justify-center shadow-md active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            className="w-12 h-12 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0e0e11] flex items-center justify-center shadow-lg active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
             title={isPlaying ? 'Pause' : 'Play voice-over'}
           >
             {isPlaying ? (
-              <Pause className="w-5 h-5 fill-white" />
+              <Pause className="w-5 h-5 fill-[#0e0e11]" />
             ) : (
-              <Play className="w-5 h-5 fill-white ml-0.5" />
+              <Play className="w-5 h-5 fill-[#0e0e11] ml-0.5" />
             )}
           </button>
 
           <button
             onClick={handleRestart}
             disabled={!audioBase64}
-            className="w-10 h-10 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 flex items-center justify-center border border-zinc-200 active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
+            className="w-10 h-10 rounded-xl bg-[#1c1c27] hover:bg-[#252535] text-[#8ab4f8] flex items-center justify-center border border-[#2d2d3e] active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
             title="Replay from start"
           >
-            <RotateCcw className="w-4 h-4 text-zinc-900" />
+            <RotateCcw className="w-4 h-4" />
           </button>
 
-          {/* Speed selector matching user screenshot */}
-          <div className="flex items-center bg-zinc-100 border border-zinc-200 rounded-xl p-0.5 text-xs font-medium">
+          {/* Speed selector */}
+          <div className="flex items-center bg-[#121218] border border-[#252535] rounded-xl p-0.5 text-xs font-mono">
             {[0.8, 1.0, 1.2, 1.5].map((rate) => (
               <button
                 key={rate}
                 onClick={() => changePlaybackRate(rate)}
-                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer font-bold ${
                   internalRate === rate
-                    ? 'bg-black text-white font-bold shadow-xs'
-                    : 'text-zinc-600 hover:text-black'
+                    ? 'bg-[#8ab4f8] text-[#0e0e11] shadow-xs'
+                    : 'text-[#808092] hover:text-white'
                 }`}
                 title={`Play & download audio at ${rate}x speed`}
               >
@@ -359,13 +359,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={toggleMute}
-              className="text-zinc-600 hover:text-black transition-colors cursor-pointer"
+              className="text-[#808092] hover:text-white transition-colors cursor-pointer"
               title={isMuted ? 'Unmute' : 'Mute'}
             >
               {isMuted || volume === 0 ? (
-                <VolumeX className="w-4 h-4 text-zinc-900" />
+                <VolumeX className="w-4 h-4 text-[#8ab4f8]" />
               ) : (
-                <Volume2 className="w-4 h-4 text-zinc-700" />
+                <Volume2 className="w-4 h-4" />
               )}
             </button>
             <input
@@ -375,14 +375,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
               step={0.05}
               value={isMuted ? 0 : volume}
               onChange={handleVolumeChange}
-              className="w-20 h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-black"
+              className="w-20 h-1.5 bg-[#252535] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8]"
             />
           </div>
 
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-zinc-500 border-l border-zinc-200 pl-3">
-            <span className="w-2 h-2 rounded-full bg-black"></span>
-            <span>Studio Voice Profile:</span>
-            <span className="text-zinc-900 font-semibold">{voiceUsed}</span>
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#808092] border-l border-[#252535] pl-3 font-mono">
+            <span className="w-2 h-2 rounded-full bg-[#8ab4f8]"></span>
+            <span>Profile:</span>
+            <span className="text-[#e2e2ea] font-medium">{voiceUsed}</span>
           </div>
         </div>
       </div>

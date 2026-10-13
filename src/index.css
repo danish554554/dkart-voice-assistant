@@ -37,18 +37,19 @@
   animation: steam-rise 2.2s ease-out 1.5s infinite;
 }
 
-/* Custom scrollbars */
+/* Custom Cursor-style dark scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f4f5;
+  background: #0e0e11;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #2b2b36;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #3e3e4e;
 }
+

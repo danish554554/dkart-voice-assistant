@@ -155,9 +155,9 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
     onGenerate({
       voice: currentVoiceObj.id,
       baseVoice: currentVoiceObj.baseVoice,
-      model: selectedModel,
+      model: 'gemini-3.8-flash-tts',
       style: stylePreset,
-      pace: selectedPace,
+      pace: selectedPace || 'moderately fast',
       script: scriptText,
       targetDuration: finalTarget,
     });
@@ -207,44 +207,19 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             </div>
             <div>
               <h3 className="font-bold text-[#f2f5fc] text-sm sm:text-base">
-                Voice Artists & Models (Pakistani Urdu Accent)
+                Voice Artists (Pakistani Urdu Accent)
               </h3>
               <p className="text-xs text-[#8090ad]">
-                Choose from 5 distinct Pakistani female commercial voices or switch TTS models
+                Choose from 5 distinct Pakistani female commercial voices • Auto-optimized by Gemini 3.8
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Model Switcher */}
-            <div className="flex items-center bg-[#0a0f1e] border border-[#1c263c] rounded-xl p-1 text-xs">
-              {MODEL_OPTIONS.map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => onModelChange(m.id)}
-                  className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer font-medium font-mono ${
-                    selectedModel === m.id
-                      ? 'bg-[#8ab4f8] text-[#0a0e1a] font-bold shadow-xs'
-                      : 'text-[#8898b8] hover:text-white'
-                  }`}
-                  title={m.description}
-                >
-                  <span>{m.name.replace('Gemini ', '')}</span>
-                  <span className="ml-1 text-[9px] opacity-75 font-mono">({m.badge})</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Pace */}
-            <select
-              value={selectedPace}
-              onChange={(e) => setSelectedPace(e.target.value)}
-              className="bg-[#0e1424] border border-[#1c263c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e8f5] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
-            >
-              <option value="Moderately Fast (~19s Reel)">Moderately Fast (19s Reel Standard)</option>
-              <option value="Fast & Viral (~16s TikTok)">Fast & Viral (16s TikTok)</option>
-              <option value="Steady Commercial (~21s)">Steady Commercial (21s Meta Ad)</option>
-            </select>
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-1 rounded-lg bg-[#18233d] text-[#8ab4f8] border border-[#28395e] text-xs font-mono font-semibold flex items-center gap-1.5 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#8ab4f8]" />
+              <span>Auto-Selected: 3.8 Flash TTS (Best Quality)</span>
+            </span>
           </div>
         </div>
 
@@ -364,7 +339,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
               Natural Pauses → <strong className="text-[#8ab4f8]">، اور ۔ استعمال کریں</strong>
             </span>
             <span className="px-2 py-0.5 rounded bg-[#16223d] border border-[#253658] font-mono text-[11px] text-[#8090ad]">
-              Model: <strong className="text-white">{selectedModel}</strong>
+              Engine: <strong className="text-[#8ab4f8]">Gemini 3.8 Flash (Auto-Best)</strong>
             </span>
           </div>
         </div>

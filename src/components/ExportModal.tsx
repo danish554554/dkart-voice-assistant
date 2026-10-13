@@ -55,19 +55,19 @@ PORT=3000
 NODE_ENV=production`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
-      <div className="relative w-full max-w-3xl bg-[#14141c] border border-[#252535] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] text-[#ededee]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div className="relative w-full max-w-3xl bg-[#0e1424] border border-[#1e2a44] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] text-[#e2e8f5]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#23232f] bg-[#181820]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1c263c] bg-[#12192d]">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#22222d] border border-[#323242] flex items-center justify-center text-[#8ab4f8]">
+            <div className="w-9 h-9 rounded-xl bg-[#18233d] border border-[#28395e] flex items-center justify-center text-[#8ab4f8]">
               <FileCode className="w-5 h-5 text-[#8ab4f8]" />
             </div>
             <div>
-              <h3 className="font-extrabold text-[#ededee] text-base">
+              <h3 className="font-extrabold text-[#f2f5fc] text-base">
                 Export & Deployment Guide
               </h3>
-              <p className="text-xs text-[#888896]">
+              <p className="text-xs text-[#8090ad]">
                 Run in VS Code • Upload to GitHub • Deploy to Render & Vercel
               </p>
             </div>
@@ -75,20 +75,20 @@ NODE_ENV=production`;
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-xl bg-[#1e1e28] hover:bg-[#2b2b3c] text-[#888896] hover:text-[#ededee] flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-xl bg-[#18233d] hover:bg-[#223052] text-[#8090ad] hover:text-[#ededee] flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 px-6 pt-4 border-b border-[#23232f] bg-[#14141c] overflow-x-auto pb-3">
+        <div className="flex items-center gap-2 px-6 pt-4 border-b border-[#1c263c] bg-[#0e1424] overflow-x-auto pb-3">
           <button
             onClick={() => setActiveTab('vscode')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'vscode'
-                ? 'bg-[#22222d] text-[#8ab4f8] border border-[#323242] shadow-xs'
-                : 'text-[#888896] hover:text-[#ededee] bg-[#181820]/60'
+                ? 'bg-[#18233d] text-[#8ab4f8] border border-[#28395e] shadow-xs'
+                : 'text-[#8090ad] hover:text-[#ededee] bg-[#12192d]/60'
             }`}
           >
             <Terminal className="w-3.5 h-3.5" />
@@ -99,8 +99,8 @@ NODE_ENV=production`;
             onClick={() => setActiveTab('github')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'github'
-                ? 'bg-[#22222d] text-[#8ab4f8] border border-[#323242] shadow-xs'
-                : 'text-[#888896] hover:text-[#ededee] bg-[#181820]/60'
+                ? 'bg-[#18233d] text-[#8ab4f8] border border-[#28395e] shadow-xs'
+                : 'text-[#8090ad] hover:text-[#ededee] bg-[#12192d]/60'
             }`}
           >
             <Github className="w-3.5 h-3.5" />
@@ -111,8 +111,8 @@ NODE_ENV=production`;
             onClick={() => setActiveTab('render')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'render'
-                ? 'bg-[#22222d] text-[#8ab4f8] border border-[#323242] shadow-xs'
-                : 'text-[#888896] hover:text-[#ededee] bg-[#181820]/60'
+                ? 'bg-[#18233d] text-[#8ab4f8] border border-[#28395e] shadow-xs'
+                : 'text-[#8090ad] hover:text-[#ededee] bg-[#12192d]/60'
             }`}
           >
             <Cloud className="w-3.5 h-3.5" />
@@ -123,8 +123,8 @@ NODE_ENV=production`;
             onClick={() => setActiveTab('vercel')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'vercel'
-                ? 'bg-[#22222d] text-[#8ab4f8] border border-[#323242] shadow-xs'
-                : 'text-[#888896] hover:text-[#ededee] bg-[#181820]/60'
+                ? 'bg-[#18233d] text-[#8ab4f8] border border-[#28395e] shadow-xs'
+                : 'text-[#8090ad] hover:text-[#ededee] bg-[#12192d]/60'
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -137,11 +137,11 @@ NODE_ENV=production`;
           {/* TAB 1: VS CODE */}
           {activeTab === 'vscode' && (
             <div className="space-y-4">
-              <div className="p-3 rounded-xl bg-[#181820] border border-[#252535] text-[#d0d0dc]">
+              <div className="p-3 rounded-xl bg-[#12192d] border border-[#1f2b45] text-[#d0ddee]">
                 <p className="font-bold text-xs mb-1 text-[#ededee]">
                   Step 1: Open project folder in VS Code
                 </p>
-                <p className="text-[#888896] text-[11px]">
+                <p className="text-[#8090ad] text-[11px]">
                   Ensure you have <strong className="text-[#ededee]">Node.js 18+</strong> installed. Then open your terminal in the project directory.
                 </p>
               </div>
@@ -157,7 +157,7 @@ NODE_ENV=production`;
                     <span>{copiedKey === 'vscode-cmd' ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="p-3 rounded-xl bg-[#0e0e11] border border-[#23232f] font-mono text-[11px] text-[#ededee] overflow-x-auto">
+                <pre className="p-3 rounded-xl bg-[#080d1a] border border-[#182236] font-mono text-[11px] text-[#ededee] overflow-x-auto">
 {`# Install all dependencies
 npm install
 
@@ -177,7 +177,7 @@ npm run dev`}
                     <span>{copiedKey === 'env-sample' ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="p-3 rounded-xl bg-[#0e0e11] border border-[#23232f] font-mono text-[11px] text-[#ededee] overflow-x-auto">
+                <pre className="p-3 rounded-xl bg-[#080d1a] border border-[#182236] font-mono text-[11px] text-[#ededee] overflow-x-auto">
 {envSample}
                 </pre>
               </div>
@@ -187,7 +187,7 @@ npm run dev`}
           {/* TAB 2: GITHUB */}
           {activeTab === 'github' && (
             <div className="space-y-4">
-              <p className="text-[#888896] text-[11px]">
+              <p className="text-[#8090ad] text-[11px]">
                 Create a new empty repository on <a href="https://github.com/new" target="_blank" rel="noreferrer" className="text-[#8ab4f8] font-semibold underline">GitHub.com</a>, then run these commands in VS Code terminal:
               </p>
 
@@ -202,7 +202,7 @@ npm run dev`}
                     <span>{copiedKey === 'git-cmd' ? 'Copied Commands' : 'Copy Commands'}</span>
                   </button>
                 </div>
-                <pre className="p-3 rounded-xl bg-[#0e0e11] border border-[#23232f] font-mono text-[11px] text-[#ededee] overflow-x-auto leading-relaxed">
+                <pre className="p-3 rounded-xl bg-[#080d1a] border border-[#182236] font-mono text-[11px] text-[#ededee] overflow-x-auto leading-relaxed">
 {gitCommands}
                 </pre>
               </div>
@@ -212,14 +212,14 @@ npm run dev`}
           {/* TAB 3: RENDER */}
           {activeTab === 'render' && (
             <div className="space-y-3">
-              <div className="p-3.5 rounded-xl bg-[#181820] border border-[#252535] space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#12192d] border border-[#1f2b45] space-y-2">
                 <span className="text-[#ededee] font-bold block">Render.com Web Service Setup:</span>
-                <ol className="list-decimal list-inside space-y-1.5 text-[#d0d0dc] leading-relaxed text-[11px]">
+                <ol className="list-decimal list-inside space-y-1.5 text-[#d0ddee] leading-relaxed text-[11px]">
                   <li>Log in to <strong className="text-[#ededee]">Render.com</strong> & click <strong>New +</strong> &gt; <strong>Web Service</strong>.</li>
                   <li>Connect your GitHub repository.</li>
-                  <li>Set <strong>Build Command</strong>: <code className="bg-[#22222d] px-1 py-0.5 rounded text-[#8ab4f8]">npm install && npm run build</code></li>
-                  <li>Set <strong>Start Command</strong>: <code className="bg-[#22222d] px-1 py-0.5 rounded text-[#8ab4f8]">npm start</code></li>
-                  <li>Add Environment Variable: <code className="bg-[#22222d] px-1 py-0.5 rounded text-[#8ab4f8]">GEMINI_API_KEY</code> = <em>Your Gemini API Key</em></li>
+                  <li>Set <strong>Build Command</strong>: <code className="bg-[#18233d] px-1 py-0.5 rounded text-[#8ab4f8]">npm install && npm run build</code></li>
+                  <li>Set <strong>Start Command</strong>: <code className="bg-[#18233d] px-1 py-0.5 rounded text-[#8ab4f8]">npm start</code></li>
+                  <li>Add Environment Variable: <code className="bg-[#18233d] px-1 py-0.5 rounded text-[#8ab4f8]">GEMINI_API_KEY</code> = <em>Your Gemini API Key</em></li>
                   <li>Click <strong>Deploy Web Service</strong>.</li>
                 </ol>
               </div>
@@ -229,13 +229,13 @@ npm run dev`}
           {/* TAB 4: VERCEL */}
           {activeTab === 'vercel' && (
             <div className="space-y-3">
-              <div className="p-3.5 rounded-xl bg-[#181820] border border-[#252535] space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#12192d] border border-[#1f2b45] space-y-2">
                 <span className="text-[#ededee] font-bold block">Vercel Setup (Zero Configuration):</span>
-                <ol className="list-decimal list-inside space-y-1.5 text-[#d0d0dc] leading-relaxed text-[11px]">
+                <ol className="list-decimal list-inside space-y-1.5 text-[#d0ddee] leading-relaxed text-[11px]">
                   <li>This project includes <code className="text-[#8ab4f8] font-semibold">vercel.json</code> and <code className="text-[#8ab4f8] font-semibold">api/tts.ts</code> ready for Vercel.</li>
                   <li>Log in to <strong className="text-[#ededee]">Vercel.com</strong> & click <strong>Add New...</strong> &gt; <strong>Project</strong>.</li>
                   <li>Import your GitHub repository.</li>
-                  <li>Add Environment Variable: <code className="bg-[#22222d] px-1 py-0.5 rounded text-[#8ab4f8]">GEMINI_API_KEY</code></li>
+                  <li>Add Environment Variable: <code className="bg-[#18233d] px-1 py-0.5 rounded text-[#8ab4f8]">GEMINI_API_KEY</code></li>
                   <li>Click <strong>Deploy</strong>. Vercel will host the frontend and serverless API automatically!</li>
                 </ol>
               </div>
@@ -244,13 +244,13 @@ npm run dev`}
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3 border-t border-[#23232f] bg-[#181820] flex items-center justify-between">
-          <span className="text-[11px] text-[#888896]">
+        <div className="px-6 py-3 border-t border-[#1c263c] bg-[#12192d] flex items-center justify-between">
+          <span className="text-[11px] text-[#8090ad]">
             All configuration files (<code className="text-[#ededee]">README.md</code>, <code className="text-[#ededee]">vercel.json</code>, <code className="text-[#ededee]">server.ts</code>) are in the project root.
           </span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-[#22222d] hover:bg-[#2e2e3d] text-[#ededee] border border-[#323242] font-semibold text-xs cursor-pointer"
+            className="px-4 py-1.5 rounded-xl bg-[#18233d] hover:bg-[#223052] text-[#ededee] border border-[#28395e] font-semibold text-xs cursor-pointer"
           >
             Close
           </button>

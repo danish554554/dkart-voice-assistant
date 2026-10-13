@@ -54,13 +54,13 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
   return (
     <div className="flex flex-col items-center">
       {/* Platform Switcher */}
-      <div className="flex items-center gap-1.5 p-1 bg-[#181820] border border-[#252535] rounded-xl mb-4 text-xs font-semibold">
+      <div className="flex items-center gap-1.5 p-1 bg-[#101628]/85 border border-[#1e2a44] rounded-xl mb-4 text-xs font-semibold backdrop-blur-md">
         <button
           onClick={() => setPlatform('daraz')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'daraz'
-              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
-              : 'text-[#888896] hover:text-[#ededee]'
+              ? 'bg-[#18233d] text-[#8ab4f8] font-bold border border-[#28395e] shadow-xs'
+              : 'text-[#8090ad] hover:text-[#ededee]'
           }`}
         >
           <ShoppingBag className="w-3.5 h-3.5" />
@@ -71,8 +71,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('tiktok')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'tiktok'
-              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
-              : 'text-[#888896] hover:text-[#ededee]'
+              ? 'bg-[#18233d] text-[#8ab4f8] font-bold border border-[#28395e] shadow-xs'
+              : 'text-[#8090ad] hover:text-[#ededee]'
           }`}
         >
           <Music2 className="w-3.5 h-3.5" />
@@ -83,8 +83,8 @@ export const ReelPreview: React.FC<ReelPreviewProps> = ({
           onClick={() => setPlatform('instagram')}
           className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
             platform === 'instagram'
-              ? 'bg-[#22222d] text-[#8ab4f8] font-bold border border-[#323242] shadow-xs'
-              : 'text-[#888896] hover:text-[#ededee]'
+              ? 'bg-[#18233d] text-[#8ab4f8] font-bold border border-[#28395e] shadow-xs'
+              : 'text-[#8090ad] hover:text-[#ededee]'
           }`}
         >
           <Sparkles className="w-3.5 h-3.5" />

@@ -184,7 +184,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0e0e11] text-[#e2e2e8] flex flex-col font-sans selection:bg-[#8ab4f8]/25 selection:text-white">
+    <div className="min-h-screen bg-transparent text-[#e2e2e8] flex flex-col font-sans selection:bg-[#8ab4f8]/25 selection:text-white">
       {/* Top Studio Navbar */}
       <Navbar
         modelName={selectedModel}
@@ -193,22 +193,22 @@ export default function App() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* Universal Studio Header Banner (Cursor AI Command Center style) */}
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-b from-[#181820] to-[#121217] border border-[#262633] p-6 sm:p-7 shadow-xl">
+        {/* Universal Studio Header Banner (Gemini-style cosmic command card) */}
+        <div className="relative overflow-hidden rounded-2xl bg-linear-to-b from-[#131a2e]/90 to-[#0e1424]/90 border border-[#202b44] p-6 sm:p-7 shadow-xl backdrop-blur-md">
           <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-1 rounded-lg bg-[#20202b] text-[#e2e2ea] border border-[#303040] font-mono font-medium text-xs flex items-center gap-1.5 shadow-xs">
+                <span className="px-2.5 py-1 rounded-lg bg-[#18233d] text-[#e2e2ea] border border-[#28395e] font-mono font-medium text-xs flex items-center gap-1.5 shadow-xs">
                   <Mic className="w-3.5 h-3.5 text-[#8ab4f8]" />
                   <span>voice:</span>
                   <strong className="text-white">{activeVoiceObj.name}</strong>
-                  <span className="text-[#808090]">({activeVoiceObj.accent})</span>
+                  <span className="text-[#8a98b4]">({activeVoiceObj.accent})</span>
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#20202b] text-[#8ab4f8] border border-[#303040] font-mono text-xs flex items-center gap-1.5">
+                <span className="px-2.5 py-1 rounded-lg bg-[#18233d] text-[#8ab4f8] border border-[#28395e] font-mono text-xs flex items-center gap-1.5">
                   <Radio className="w-3.5 h-3.5 text-[#8ab4f8] animate-pulse" />
                   <span>commercial-studio</span>
                 </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#14141a] text-[#a0a0b0] font-mono text-xs border border-[#242430]">
+                <span className="px-2.5 py-1 rounded-lg bg-[#0e1424] text-[#8a98b4] font-mono text-xs border border-[#1b253b]">
                   model: <span className="text-[#c5c5d2]">{selectedModel}</span>
                 </span>
                 <span className="px-2.5 py-1 rounded-lg bg-[#8ab4f8]/10 text-[#8ab4f8] border border-[#8ab4f8]/30 text-xs font-mono font-semibold">
@@ -223,43 +223,43 @@ export default function App() {
                 </span>
               </h1>
 
-              <p className="text-sm text-[#9595a5] leading-relaxed">
+              <p className="text-sm text-[#95a2bd] leading-relaxed">
                 Universal studio-grade Urdu text-to-speech for any e-commerce product, Daraz campaign, TikTok ads, or Instagram reels. Featuring native Pakistani regional accents (Karachi, Lahore, Islamabad, Influencer, FM Radio) powered by Google Gemini TTS.
               </p>
             </div>
 
-            {/* Studio Capabilities Overview (Cursor-style tool cards) */}
+            {/* Studio Capabilities Overview (Gemini tool cards) */}
             <div className="grid grid-cols-2 gap-2.5 w-full lg:w-auto shrink-0 text-xs">
-              <div className="p-3 rounded-xl bg-[#1c1c25]/80 border border-[#2b2b3a] hover:border-[#8ab4f8]/40 transition-colors">
+              <div className="p-3 rounded-xl bg-[#141b2f]/70 border border-[#222e4c] hover:border-[#8ab4f8]/40 transition-colors">
                 <div className="flex items-center gap-1.5 text-white font-mono font-bold mb-1">
                   <Flame className="w-4 h-4 text-[#8ab4f8]" />
                   <span>Gemini 3.8</span>
                 </div>
-                <p className="text-[#808090] text-[11px] font-mono">24kHz Audio</p>
+                <p className="text-[#8090ad] text-[11px] font-mono">24kHz Audio</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#1c1c25]/80 border border-[#2b2b3a] hover:border-[#8ab4f8]/40 transition-colors">
+              <div className="p-3 rounded-xl bg-[#141b2f]/70 border border-[#222e4c] hover:border-[#8ab4f8]/40 transition-colors">
                 <div className="flex items-center gap-1.5 text-white font-mono font-bold mb-1">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>5+ Accents</span>
                 </div>
-                <p className="text-[#808090] text-[11px] font-mono">Karachi, Lahore</p>
+                <p className="text-[#8090ad] text-[11px] font-mono">Karachi, Lahore</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#1c1c25]/80 border border-[#2b2b3a] hover:border-[#8ab4f8]/40 transition-colors">
+              <div className="p-3 rounded-xl bg-[#141b2f]/70 border border-[#222e4c] hover:border-[#8ab4f8]/40 transition-colors">
                 <div className="flex items-center gap-1.5 text-white font-mono font-bold mb-1">
                   <Zap className="w-4 h-4 text-amber-400" />
                   <span>0.5x – 2.0x</span>
                 </div>
-                <p className="text-[#808090] text-[11px] font-mono">WAV Resampling</p>
+                <p className="text-[#8090ad] text-[11px] font-mono">WAV Resampling</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#1c1c25]/80 border border-[#2b2b3a] hover:border-[#8ab4f8]/40 transition-colors">
+              <div className="p-3 rounded-xl bg-[#141b2f]/70 border border-[#222e4c] hover:border-[#8ab4f8]/40 transition-colors">
                 <div className="flex items-center gap-1.5 text-white font-mono font-bold mb-1">
                   <Clock className="w-4 h-4 text-sky-400" />
                   <span>9:16 Sync</span>
                 </div>
-                <p className="text-[#808090] text-[11px] font-mono">Reels Mockup</p>
+                <p className="text-[#8090ad] text-[11px] font-mono">Reels Mockup</p>
               </div>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function App() {
 
         {/* Notifications / Alerts */}
         {errorMessage && (
-          <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-200 text-xs flex items-center justify-between gap-3">
+          <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-200 text-xs flex items-center justify-between gap-3 backdrop-blur-sm">
             <div className="flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
               <span>{errorMessage}</span>
@@ -282,25 +282,25 @@ export default function App() {
         )}
 
         {statusMessage && !errorMessage && (
-          <div className="p-3.5 rounded-xl bg-[#181822] border border-[#2b2b3c] text-[#d0d0dc] text-xs flex items-center justify-between gap-3">
+          <div className="p-3.5 rounded-xl bg-[#12192d]/85 border border-[#202b44] text-[#d0d8ec] text-xs flex items-center justify-between gap-3 backdrop-blur-sm">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#8ab4f8] shrink-0" />
               <span>{statusMessage}</span>
             </div>
-            <span className="text-[11px] font-mono text-[#757585]">
+            <span className="text-[11px] font-mono text-[#7888a6]">
               source: {source}
             </span>
           </div>
         )}
 
-        {/* Studio Navigation Tabs (Cursor-style tabs) */}
-        <div className="flex items-center gap-1.5 border-b border-[#23232e] pb-1 overflow-x-auto">
+        {/* Studio Navigation Tabs (Gemini-style cosmic tabs) */}
+        <div className="flex items-center gap-1.5 border-b border-[#1d273d] pb-1 overflow-x-auto">
           <button
             onClick={() => setActiveTab('studio')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'studio'
-                ? 'bg-[#22222d] text-white border border-[#323242] shadow-sm font-semibold'
-                : 'text-[#888896] hover:text-[#e0e0ea] hover:bg-[#181820]'
+                ? 'bg-[#18233d] text-white border border-[#2a3c64] shadow-sm font-semibold'
+                : 'text-[#8a98b4] hover:text-[#e0e0ea] hover:bg-[#141b2f]'
             }`}
           >
             <Mic className="w-3.5 h-3.5 text-[#8ab4f8]" />
@@ -311,8 +311,8 @@ export default function App() {
             onClick={() => setActiveTab('reel')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'reel'
-                ? 'bg-[#22222d] text-white border border-[#323242] shadow-sm font-semibold'
-                : 'text-[#888896] hover:text-[#e0e0ea] hover:bg-[#181820]'
+                ? 'bg-[#18233d] text-white border border-[#2a3c64] shadow-sm font-semibold'
+                : 'text-[#8a98b4] hover:text-[#e0e0ea] hover:bg-[#141b2f]'
             }`}
           >
             <Video className="w-3.5 h-3.5 text-purple-400" />
@@ -323,8 +323,8 @@ export default function App() {
             onClick={() => setActiveTab('storyboard')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'storyboard'
-                ? 'bg-[#22222d] text-white border border-[#323242] shadow-sm font-semibold'
-                : 'text-[#888896] hover:text-[#e0e0ea] hover:bg-[#181820]'
+                ? 'bg-[#18233d] text-white border border-[#2a3c64] shadow-sm font-semibold'
+                : 'text-[#8a98b4] hover:text-[#e0e0ea] hover:bg-[#141b2f]'
             }`}
           >
             <Layers className="w-3.5 h-3.5 text-amber-400" />
@@ -335,8 +335,8 @@ export default function App() {
             onClick={() => setActiveTab('specs')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'specs'
-                ? 'bg-[#22222d] text-white border border-[#323242] shadow-sm font-semibold'
-                : 'text-[#888896] hover:text-[#e0e0ea] hover:bg-[#181820]'
+                ? 'bg-[#18233d] text-white border border-[#2a3c64] shadow-sm font-semibold'
+                : 'text-[#8a98b4] hover:text-[#e0e0ea] hover:bg-[#141b2f]'
             }`}
           >
             <FileText className="w-3.5 h-3.5 text-emerald-400" />
@@ -373,15 +373,15 @@ export default function App() {
             {/* Live Synchronized Reel Preview & Scene Storyboard */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               <div className="lg:col-span-5 flex justify-center">
-                <div className="w-full bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 flex flex-col items-center shadow-lg">
-                  <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#252535]">
+                <div className="w-full bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 flex flex-col items-center shadow-lg backdrop-blur-md">
+                  <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#1c263c]">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#8ab4f8] animate-pulse"></span>
                       <h4 className="font-bold text-xs sm:text-sm text-[#ededf2]">
                         Live 9:16 Ad Reel Visualizer
                       </h4>
                     </div>
-                    <span className="text-[11px] font-mono text-[#8ab4f8] bg-[#22222f] px-2 py-0.5 rounded border border-[#303042]">
+                    <span className="text-[11px] font-mono text-[#8ab4f8] bg-[#18233d] px-2 py-0.5 rounded border border-[#28395e]">
                       sync: {currentTime.toFixed(1)}s / {duration.toFixed(1)}s
                     </span>
                   </div>
@@ -395,15 +395,15 @@ export default function App() {
               </div>
 
               <div className="lg:col-span-7 space-y-4">
-                <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-lg space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#252535]">
+                <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 shadow-lg space-y-4 backdrop-blur-md">
+                  <div className="flex items-center justify-between pb-3 border-b border-[#1c263c]">
                     <div className="flex items-center gap-2">
                       <Layers className="w-4 h-4 text-[#8ab4f8]" />
                       <h4 className="font-bold text-[#ededf2] text-sm">
                         Live Scene Timing & Playback Sync
                       </h4>
                     </div>
-                    <span className="text-xs text-[#808092] font-mono">
+                    <span className="text-xs text-[#8090ad] font-mono">
                       {SCRIPT_LINES.length} Acts Breakdown
                     </span>
                   </div>
@@ -417,8 +417,8 @@ export default function App() {
                           onClick={() => handleSeekRequest(line.startTime)}
                           className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                             isSpoken
-                              ? 'bg-[#222230] border-[#8ab4f8] shadow-md ring-1 ring-[#8ab4f8]/30'
-                              : 'bg-[#14141c] border-[#252535] hover:border-[#38384d] hover:bg-[#1a1a24]'
+                              ? 'bg-[#192544] border-[#8ab4f8] shadow-md ring-1 ring-[#8ab4f8]/30'
+                              : 'bg-[#0e1424] border-[#1c263c] hover:border-[#2a3c64] hover:bg-[#141d33]'
                           }`}
                         >
                           <div className="flex items-center justify-between text-xs pb-1">
@@ -426,7 +426,7 @@ export default function App() {
                               Act 0{line.id}: {line.role} ({line.startTime}s - {line.endTime}s)
                             </span>
                             {isSpoken && (
-                              <span className="text-[10px] bg-[#8ab4f8] text-[#0e0e11] px-2 py-0.5 rounded-md font-mono font-bold">
+                              <span className="text-[10px] bg-[#8ab4f8] text-[#0a0e1a] px-2 py-0.5 rounded-md font-mono font-bold">
                                 PLAYING
                               </span>
                             )}
@@ -434,7 +434,7 @@ export default function App() {
                           <p className="font-urdu text-lg font-bold text-right text-[#f2f2f8]">
                             {line.urdu}
                           </p>
-                          <p className="text-xs text-[#9090a2] mt-1 italic font-sans">
+                          <p className="text-xs text-[#909cb4] mt-1 italic font-sans">
                             "{line.roman}"
                           </p>
                         </div>
@@ -459,28 +459,28 @@ export default function App() {
             </div>
 
             <div className="md:col-span-6 lg:col-span-7 space-y-4">
-              <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-lg space-y-4">
-                <div className="flex items-center gap-2 pb-3 border-b border-[#252535]">
+              <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 shadow-lg space-y-4 backdrop-blur-md">
+                <div className="flex items-center gap-2 pb-3 border-b border-[#1c263c]">
                   <ShoppingBag className="w-5 h-5 text-[#8ab4f8]" />
                   <h3 className="font-bold text-[#ededf2] text-base">
                     E-Commerce Ad Deployment & Captions
                   </h3>
                 </div>
 
-                <p className="text-xs text-[#9595a6] leading-relaxed">
+                <p className="text-xs text-[#95a2bd] leading-relaxed">
                   The generated voice-over audio is perfectly matched with vertical mobile layouts for Daraz Mall, TikTok Ads Manager, Meta Reels (Facebook & Instagram).
                 </p>
 
                 <div className="space-y-3">
-                  {SCRIPT_LINES.map((line, idx) => {
+                  {SCRIPT_LINES.map((line) => {
                     const isSpoken = currentTime >= line.startTime && currentTime < line.endTime;
                     return (
                       <div
                         key={line.id}
                         className={`p-3 rounded-xl border transition-all ${
                           isSpoken
-                            ? 'bg-[#222230] border-[#8ab4f8] shadow-md ring-1 ring-[#8ab4f8]/30'
-                            : 'bg-[#14141c] border-[#252535]'
+                            ? 'bg-[#192544] border-[#8ab4f8] shadow-md ring-1 ring-[#8ab4f8]/30'
+                            : 'bg-[#0e1424] border-[#1c263c]'
                         }`}
                       >
                         <div className="flex items-center justify-between text-xs pb-1">
@@ -488,7 +488,7 @@ export default function App() {
                             Act 0{line.id}: {line.role} ({line.startTime}s - {line.endTime}s)
                           </span>
                           {isSpoken && (
-                            <span className="text-[10px] bg-[#8ab4f8] text-[#0e0e11] px-2 py-0.5 rounded-md font-mono font-bold">
+                            <span className="text-[10px] bg-[#8ab4f8] text-[#0a0e1a] px-2 py-0.5 rounded-md font-mono font-bold">
                               SPEAKING
                             </span>
                           )}
@@ -496,7 +496,7 @@ export default function App() {
                         <p className="font-urdu text-lg font-bold text-right text-[#f2f2f8]">
                           {line.urdu}
                         </p>
-                        <p className="text-xs text-[#9090a2] mt-1 italic font-sans">
+                        <p className="text-xs text-[#909cb4] mt-1 italic font-sans">
                           "{line.roman}"
                         </p>
                       </div>
@@ -521,19 +521,19 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 border-t border-[#23232f] bg-[#121217] py-6 text-xs text-[#808092]">
+      <footer className="mt-12 border-t border-[#1a2338] bg-[#0a0e1a]/85 py-6 text-xs text-[#8090ad] backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#8ab4f8]"></span>
-            <span className="text-[#c0c0d0]">D-Kart Voice Studio</span>
-            <span className="text-[#555566]">•</span>
+            <span className="text-[#c0cce0]">D-Kart Voice Studio</span>
+            <span className="text-[#405070]">•</span>
             <span>Urdu AI Audio</span>
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] text-[#707082]">
+          <div className="flex items-center gap-3 text-[11px] text-[#7080a0]">
             <span>Powered by Gemini 3.8 Flash TTS</span>
             <span>•</span>
-            <span className="text-[#8ab4f8]">Cursor AI Dark Theme</span>
+            <span className="text-[#8ab4f8]">Cosmic Dark Theme</span>
           </div>
         </div>
       </footer>

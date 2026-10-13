@@ -197,19 +197,19 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Voice Selection & Style Bar (Cursor AI style) */}
-      <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-lg space-y-4 text-[#e2e2e8]">
+      {/* Voice Selection & Style Bar (Gemini cosmic navy style) */}
+      <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 shadow-lg space-y-4 text-[#e2e8f5] backdrop-blur-md">
         {/* Model & Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#252535]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#1c263c]">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#22222f] border border-[#323245] flex items-center justify-center text-[#8ab4f8]">
+            <div className="w-8 h-8 rounded-xl bg-[#18233d] border border-[#28395e] flex items-center justify-center text-[#8ab4f8]">
               <Headphones className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-[#f2f2f8] text-sm sm:text-base">
+              <h3 className="font-bold text-[#f2f5fc] text-sm sm:text-base">
                 Voice Artists & Models (Pakistani Urdu Accent)
               </h3>
-              <p className="text-xs text-[#808092]">
+              <p className="text-xs text-[#8090ad]">
                 Choose from 5 distinct Pakistani female commercial voices or switch TTS models
               </p>
             </div>
@@ -217,15 +217,15 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Model Switcher */}
-            <div className="flex items-center bg-[#121218] border border-[#262635] rounded-xl p-1 text-xs">
+            <div className="flex items-center bg-[#0a0f1e] border border-[#1c263c] rounded-xl p-1 text-xs">
               {MODEL_OPTIONS.map((m) => (
                 <button
                   key={m.id}
                   onClick={() => onModelChange(m.id)}
                   className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer font-medium font-mono ${
                     selectedModel === m.id
-                      ? 'bg-[#8ab4f8] text-[#0e0e11] font-bold shadow-xs'
-                      : 'text-[#888898] hover:text-white'
+                      ? 'bg-[#8ab4f8] text-[#0a0e1a] font-bold shadow-xs'
+                      : 'text-[#8898b8] hover:text-white'
                   }`}
                   title={m.description}
                 >
@@ -239,7 +239,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             <select
               value={selectedPace}
               onChange={(e) => setSelectedPace(e.target.value)}
-              className="bg-[#14141c] border border-[#2b2b3c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e2ea] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
+              className="bg-[#0e1424] border border-[#1c263c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e8f5] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
             >
               <option value="Moderately Fast (~19s Reel)">Moderately Fast (19s Reel Standard)</option>
               <option value="Fast & Viral (~16s TikTok)">Fast & Viral (16s TikTok)</option>
@@ -254,8 +254,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             onClick={() => setGenderFilter('female')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               genderFilter === 'female'
-                ? 'bg-[#222230] text-white border border-[#8ab4f8]/50 shadow-sm'
-                : 'bg-[#14141c] text-[#888898] hover:text-white border border-[#262635]'
+                ? 'bg-[#18233d] text-white border border-[#8ab4f8]/50 shadow-sm'
+                : 'text-[#8a98b4] hover:text-white bg-[#0e1424] border border-[#1c263c]'
             }`}
           >
             <span>Pakistani Female Artists (5) • خواتین صدا کار</span>
@@ -266,8 +266,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             onClick={() => setGenderFilter('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               genderFilter === 'all'
-                ? 'bg-[#222230] text-white border border-[#8ab4f8]/50 shadow-sm'
-                : 'bg-[#14141c] text-[#888898] hover:text-white border border-[#262635]'
+                ? 'bg-[#18233d] text-white border border-[#8ab4f8]/50 shadow-sm'
+                : 'text-[#8a98b4] hover:text-white bg-[#0e1424] border border-[#1c263c]'
             }`}
           >
             All Voices (8)
@@ -277,8 +277,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             onClick={() => setGenderFilter('male')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               genderFilter === 'male'
-                ? 'bg-[#222230] text-white border border-[#8ab4f8]/50 shadow-sm'
-                : 'bg-[#14141c] text-[#888898] hover:text-white border border-[#262635]'
+                ? 'bg-[#18233d] text-white border border-[#8ab4f8]/50 shadow-sm'
+                : 'text-[#8a98b4] hover:text-white bg-[#0e1424] border border-[#1c263c]'
             }`}
           >
             Male Voices (3)
@@ -295,8 +295,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                 onClick={() => handleVoiceSelect(voice)}
                 className={`p-3.5 rounded-xl border transition-all cursor-pointer relative ${
                   isSelected
-                    ? 'bg-[#20202e] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/30 shadow-md'
-                    : 'bg-[#14141c] border-[#252535] hover:border-[#38384d] hover:bg-[#1a1a24]'
+                    ? 'bg-[#1a2644] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/40 shadow-md'
+                    : 'bg-[#0e1424] border-[#1c263c] hover:border-[#2a3c64] hover:bg-[#131b30]'
                 }`}
               >
                 <div className="flex items-start justify-between">
@@ -304,8 +304,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                     <div
                       className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold shadow-xs ${
                         isSelected
-                          ? 'bg-[#8ab4f8] text-[#0e0e11]'
-                          : 'bg-[#22222f] text-[#8ab4f8] border border-[#303042]'
+                          ? 'bg-[#8ab4f8] text-[#0a0e1a]'
+                          : 'bg-[#18233d] text-[#8ab4f8] border border-[#28395e]'
                       }`}
                     >
                       {voice.name[0]}
@@ -321,7 +321,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                           </span>
                         )}
                       </div>
-                      <span className="text-[10px] text-[#9090a2] font-medium font-urdu block leading-tight">
+                      <span className="text-[10px] text-[#909cb4] font-medium font-urdu block leading-tight">
                         {voice.urduName}
                       </span>
                     </div>
@@ -333,16 +333,16 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
                 {/* Accent Tag */}
                 <div className="mt-2.5 flex items-center gap-1">
-                  <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#181822] border border-[#2b2b3a] text-[#8ab4f8] font-mono">
+                  <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#141d33] border border-[#223050] text-[#8ab4f8] font-mono">
                     📍 {voice.accent}
                   </span>
                 </div>
 
-                <p className="text-[11px] text-[#9090a2] mt-2 line-clamp-2">
+                <p className="text-[11px] text-[#909cb4] mt-2 line-clamp-2">
                   {voice.tone}
                 </p>
 
-                <div className="mt-2 text-[10px] font-mono text-[#a5a5b5] bg-[#1a1a24] px-2 py-0.5 rounded border border-[#282838] truncate">
+                <div className="mt-2 text-[10px] font-mono text-[#a5b2cc] bg-[#141d33] px-2 py-0.5 rounded border border-[#223050] truncate">
                   🎯 {voice.bestFor}
                 </div>
               </div>
@@ -351,19 +351,19 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
         </div>
 
         {/* Pronunciation Rule Alert */}
-        <div className="mt-2 p-3 rounded-xl bg-[#14141c] border border-[#262635] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-[#e2e2ea] font-semibold">
+        <div className="mt-2 p-3 rounded-xl bg-[#0e1424] border border-[#1c263c] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-[#e2e8f5] font-semibold">
             <Info className="w-4 h-4 text-[#8ab4f8] shrink-0" />
             <span>Pakistani Urdu Pronunciation Tips:</span>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-[#9595a6]">
-            <span className="px-2 py-0.5 rounded bg-[#1c1c27] border border-[#2b2b3a] font-mono text-[11px] text-[#ededf2]">
+          <div className="flex flex-wrap items-center gap-2 text-[#95a2bd]">
+            <span className="px-2 py-0.5 rounded bg-[#16223d] border border-[#253658] font-mono text-[11px] text-[#ededf5]">
               Brand Names → <strong className="text-[#8ab4f8]">اردو رسم الخط (e.g. ڈی کارٹ)</strong>
             </span>
-            <span className="px-2 py-0.5 rounded bg-[#1c1c27] border border-[#2b2b3a] font-mono text-[11px] text-[#ededf2]">
+            <span className="px-2 py-0.5 rounded bg-[#16223d] border border-[#253658] font-mono text-[11px] text-[#ededf5]">
               Natural Pauses → <strong className="text-[#8ab4f8]">، اور ۔ استعمال کریں</strong>
             </span>
-            <span className="px-2 py-0.5 rounded bg-[#1c1c27] border border-[#2b2b3a] font-mono text-[11px] text-[#808092]">
+            <span className="px-2 py-0.5 rounded bg-[#16223d] border border-[#253658] font-mono text-[11px] text-[#8090ad]">
               Model: <strong className="text-white">{selectedModel}</strong>
             </span>
           </div>
@@ -371,23 +371,23 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
       </div>
 
       {/* Voicemaker Style: Script & Speech Synthesis Studio Card */}
-      <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 sm:p-7 shadow-xl space-y-6 text-[#e2e2e8]">
+      <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 sm:p-7 shadow-xl space-y-6 text-[#e2e8f5] backdrop-blur-md">
         {/* Voicemaker Studio Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#252535]">
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1c263c]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#22222f] border border-[#303042] flex items-center justify-center text-[#8ab4f8]">
+            <div className="w-10 h-10 rounded-xl bg-[#18233d] border border-[#28395e] flex items-center justify-center text-[#8ab4f8]">
               <FileAudio className="w-5 h-5 text-[#8ab4f8]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-[#f2f2f8] text-base sm:text-lg">
+                <h3 className="font-bold text-[#f2f5fc] text-base sm:text-lg">
                   Text to Speech Studio
                 </h3>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#22222f] text-[#8ab4f8] border border-[#303042] font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#18233d] text-[#8ab4f8] border border-[#28395e] font-bold">
                   اردو - پاکستان (Urdu)
                 </span>
               </div>
-              <p className="text-xs text-[#808092] mt-0.5">
+              <p className="text-xs text-[#8090ad] mt-0.5">
                 Type or edit your Urdu script, adjust speed & pacing, then convert to speech
               </p>
             </div>
@@ -397,7 +397,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
           <div className="flex flex-wrap items-center gap-1.5 font-mono">
             <button
               onClick={() => handleInsertPause('short')}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#14141c] hover:bg-[#22222e] text-[#c0c0d0] border border-[#262635] transition-colors cursor-pointer flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#0e1424] hover:bg-[#18233d] text-[#c0d0ec] border border-[#1c263c] transition-colors cursor-pointer flex items-center gap-1"
               title="Insert a short natural breathing pause (Urdu comma)"
             >
               <Clock className="w-3 h-3 text-[#8ab4f8]" />
@@ -406,7 +406,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
             <button
               onClick={() => handleInsertPause('long')}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#14141c] hover:bg-[#22222e] text-[#c0c0d0] border border-[#262635] transition-colors cursor-pointer flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#0e1424] hover:bg-[#18233d] text-[#c0d0ec] border border-[#1c263c] transition-colors cursor-pointer flex items-center gap-1"
               title="Insert a sentence-ending pause (Urdu period)"
             >
               <Clock className="w-3 h-3 text-[#8ab4f8]" />
@@ -415,7 +415,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
             <button
               onClick={handleResetScript}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#14141c] hover:bg-[#22222e] text-[#c0c0d0] border border-[#262635] transition-colors cursor-pointer flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#0e1424] hover:bg-[#18233d] text-[#c0d0ec] border border-[#1c263c] transition-colors cursor-pointer flex items-center gap-1"
               title="Load sample commercial script"
             >
               <RotateCcw className="w-3 h-3 text-[#8ab4f8]" />
@@ -424,7 +424,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
             <button
               onClick={handleClearScript}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#14141c] hover:bg-[#22222e] text-[#808092] hover:text-white border border-[#262635] transition-colors cursor-pointer flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#0e1424] hover:bg-[#18233d] text-[#8090ad] hover:text-white border border-[#1c263c] transition-colors cursor-pointer flex items-center gap-1"
               title="Clear script"
             >
               <Trash2 className="w-3 h-3" />
@@ -433,7 +433,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
             <button
               onClick={handleCopyScript}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#14141c] hover:bg-[#22222e] text-[#c0c0d0] border border-[#262635] transition-colors cursor-pointer flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#0e1424] hover:bg-[#18233d] text-[#c0d0ec] border border-[#1c263c] transition-colors cursor-pointer flex items-center gap-1"
               title="Copy script to clipboard"
             >
               {copied ? (
@@ -443,7 +443,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                 </>
               ) : (
                 <>
-                  <Copy className="w-3 h-3 text-[#808092]" />
+                  <Copy className="w-3 h-3 text-[#8090ad]" />
                   <span>Copy</span>
                 </>
               )}
@@ -451,7 +451,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
             <button
               onClick={() => setShowExportModal(true)}
-              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#22222f] hover:bg-[#2c2c3d] text-[#8ab4f8] border border-[#323245] transition-colors cursor-pointer font-medium flex items-center gap-1"
+              className="text-xs px-2.5 py-1.5 rounded-lg bg-[#18233d] hover:bg-[#223052] text-[#8ab4f8] border border-[#28395e] transition-colors cursor-pointer font-medium flex items-center gap-1"
               title="Deployment and Export Guide"
             >
               <Github className="w-3 h-3" />
@@ -466,13 +466,13 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
           <div className="lg:col-span-7 flex flex-col space-y-4">
             {/* View Switcher & Counter Bar */}
             <div className="flex flex-wrap items-center justify-between gap-2.5 text-xs">
-              <div className="flex items-center bg-[#121218] border border-[#262635] rounded-xl p-1">
+              <div className="flex items-center bg-[#0a0f1e] border border-[#1c263c] rounded-xl p-1">
                 <button
                   onClick={() => setScriptView('editor')}
                   className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer font-medium flex items-center gap-1.5 ${
                     scriptView === 'editor'
-                      ? 'bg-[#222230] text-[#8ab4f8] border border-[#8ab4f8]/30 shadow-xs font-semibold'
-                      : 'text-[#808092] hover:text-[#e0e0ea]'
+                      ? 'bg-[#18233d] text-[#8ab4f8] border border-[#8ab4f8]/30 shadow-xs font-semibold'
+                      : 'text-[#8090ad] hover:text-[#e0e8f5]'
                   }`}
                 >
                   <FileText className="w-3.5 h-3.5 text-[#8ab4f8]" />
@@ -482,8 +482,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                   onClick={() => setScriptView('breakdown')}
                   className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer font-medium flex items-center gap-1.5 ${
                     scriptView === 'breakdown'
-                      ? 'bg-[#222230] text-[#8ab4f8] border border-[#8ab4f8]/30 shadow-xs font-semibold'
-                      : 'text-[#808092] hover:text-[#e0e0ea]'
+                      ? 'bg-[#18233d] text-[#8ab4f8] border border-[#8ab4f8]/30 shadow-xs font-semibold'
+                      : 'text-[#8090ad] hover:text-[#e0e8f5]'
                   }`}
                 >
                   <Sliders className="w-3.5 h-3.5" />
@@ -491,15 +491,15 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 font-mono text-[#808092] bg-[#14141c] px-2.5 py-1.5 rounded-xl border border-[#252535] text-[11px]">
+              <div className="flex items-center gap-2 font-mono text-[#8090ad] bg-[#0e1424] px-2.5 py-1.5 rounded-xl border border-[#1c263c] text-[11px]">
                 <span>
                   chars: <strong className="text-white">{charCount}</strong>
                 </span>
-                <span className="text-[#3a3a4c]">|</span>
+                <span className="text-[#2c3d64]">|</span>
                 <span>
                   words: <strong className="text-white">{wordCount}</strong>
                 </span>
-                <span className="text-[#3a3a4c]">|</span>
+                <span className="text-[#2c3d64]">|</span>
                 <span>
                   est: <strong className="text-[#8ab4f8]">~{estimatedSeconds}s</strong>
                 </span>
@@ -516,14 +516,14 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                     rows={12}
                     dir="rtl"
                     placeholder="یہاں اپنا اردو کمرشل اسکرپٹ لکھیں یا پیسٹ کریں..."
-                    className="w-full h-full min-h-[340px] p-5 rounded-2xl bg-[#121218] border border-[#262638] font-urdu text-xl sm:text-2xl text-[#f4f4f9] placeholder-[#555566] focus:outline-hidden focus:border-[#8ab4f8] focus:ring-1 focus:ring-[#8ab4f8] leading-[2.2] tracking-wide resize-y shadow-inner transition-all selection:bg-[#8ab4f8]/30 selection:text-white"
+                    className="w-full h-full min-h-[340px] p-5 rounded-2xl bg-[#0a0f1e] border border-[#1c263c] font-urdu text-xl sm:text-2xl text-[#f4f7fc] placeholder-[#4e5e7c] focus:outline-hidden focus:border-[#8ab4f8] focus:ring-1 focus:ring-[#8ab4f8] leading-[2.2] tracking-wide resize-y shadow-inner transition-all selection:bg-[#8ab4f8]/30 selection:text-white"
                   />
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-[#808092] font-sans">
-                  <span className="flex items-center gap-1.5 text-[#a0a0b2]">
+                <div className="flex items-center justify-between text-[11px] text-[#8090ad] font-sans">
+                  <span className="flex items-center gap-1.5 text-[#9ab0d4]">
                     <Sparkles className="w-3.5 h-3.5 text-[#8ab4f8]" /> High-conversion Urdu Nastaliq
                   </span>
-                  <span className="italic text-[#68687a]">
+                  <span className="italic text-[#687898]">
                     * Native Urdu punctuation (، اور ۔) triggers pauses
                   </span>
                 </div>
@@ -538,22 +538,22 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                       onClick={() => onLineClick && onLineClick(line.startTime)}
                       className={`p-3.5 rounded-xl border transition-all cursor-pointer relative ${
                         isActive
-                          ? 'bg-[#222232] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/40 shadow-sm'
-                          : 'bg-[#14141c] border-[#252535] hover:border-[#38384d] hover:bg-[#1a1a24]'
+                          ? 'bg-[#192544] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/40 shadow-sm'
+                          : 'bg-[#0e1424] border-[#1c263c] hover:border-[#2a3c64] hover:bg-[#131b30]'
                       }`}
                     >
-                      <div className="flex items-center justify-between text-xs pb-1.5 border-b border-[#252535]">
+                      <div className="flex items-center justify-between text-xs pb-1.5 border-b border-[#1c263c]">
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#1e1e2b] text-[#8ab4f8] border border-[#2d2d3e]">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#16223d] text-[#8ab4f8] border border-[#253658]">
                             Act {line.id}: {line.role}
                           </span>
-                          <span className="font-mono text-[#808092] text-[11px]">
+                          <span className="font-mono text-[#8090ad] text-[11px]">
                             {line.startTime.toFixed(1)}s - {line.endTime.toFixed(1)}s
                           </span>
                         </div>
 
                         {line.pronunciationNote && (
-                          <span className="text-[10px] text-[#78788a] hidden sm:inline-block italic">
+                          <span className="text-[10px] text-[#7888a6] hidden sm:inline-block italic">
                             {line.pronunciationNote}
                           </span>
                         )}
@@ -561,15 +561,15 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
                       {/* Urdu Nastaliq Primary Text */}
                       <div className="pt-2 pb-1 text-right">
-                        <p className="text-xl font-bold font-urdu text-[#f2f2f8] tracking-wide leading-relaxed">
+                        <p className="text-xl font-bold font-urdu text-[#f2f5fc] tracking-wide leading-relaxed">
                           {line.urdu}
                         </p>
                       </div>
 
                       {/* Roman Urdu & English translation */}
-                      <div className="pt-1.5 border-t border-[#252535] flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#808092] font-sans">
-                        <p className="italic text-[#c0c0d2] font-medium">"{line.roman}"</p>
-                        <p className="text-[#808092]">{line.english}</p>
+                      <div className="pt-1.5 border-t border-[#1c263c] flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] text-[#8090ad] font-sans">
+                        <p className="italic text-[#c0d0ec] font-medium">"{line.roman}"</p>
+                        <p className="text-[#8090ad]">{line.english}</p>
                       </div>
                     </div>
                   );
@@ -579,35 +579,35 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
           </div>
 
           {/* RIGHT SIDE: Voice Settings & Generate / Download Buttons Panel (lg:col-span-5) */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#14141c] border border-[#252535] space-y-4 shadow-inner text-[#e2e2e8]">
+          <div className="lg:col-span-5 flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#0e1424] border border-[#1c263c] space-y-4 shadow-inner text-[#e2e8f5]">
             <div className="space-y-4">
               {/* Settings Panel Header */}
-              <div className="flex items-center justify-between pb-2 border-b border-[#252535]">
+              <div className="flex items-center justify-between pb-2 border-b border-[#1c263c]">
                 <div className="flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-[#8ab4f8]" />
                   <h4 className="font-bold text-[#ededf2] text-xs sm:text-sm font-mono">
                     Voice Settings & Controls
                   </h4>
                 </div>
-                <span className="text-[10px] text-[#8ab4f8] font-mono font-medium bg-[#1e1e2a] px-2 py-0.5 rounded border border-[#2f2f42]">
-                  Cursor AI Audio
+                <span className="text-[10px] text-[#8ab4f8] font-mono font-medium bg-[#18233d] px-2 py-0.5 rounded border border-[#28395e]">
+                  Gemini Audio
                 </span>
               </div>
 
               {/* Speed Control (matching screenshot) */}
-              <div className="space-y-2 bg-[#181822] p-3.5 rounded-xl border border-[#262638]">
+              <div className="space-y-2 bg-[#12192d] p-3.5 rounded-xl border border-[#1f2b45]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[#c0c0d0] font-semibold text-xs flex items-center gap-1.5">
+                  <span className="text-[#c0d0ec] font-semibold text-xs flex items-center gap-1.5">
                     <Gauge className="w-3.5 h-3.5 text-[#8ab4f8]" />
                     Voice Speed:
                   </span>
-                  <span className="font-mono text-[#8ab4f8] font-bold text-xs bg-[#20202e] px-2 py-0.5 rounded border border-[#303045]">
+                  <span className="font-mono text-[#8ab4f8] font-bold text-xs bg-[#18233d] px-2 py-0.5 rounded border border-[#28395e]">
                     {playbackRate}x {playbackRate > 1 ? `(+${Math.round((playbackRate - 1) * 100)}%)` : playbackRate < 1 ? `(${Math.round((playbackRate - 1) * 100)}%)` : '(100%)'}
                   </span>
                 </div>
 
-                {/* Speed Pills (Cursor style) */}
-                <div className="flex items-center gap-1 bg-[#121218] p-1 rounded-xl border border-[#252535]">
+                {/* Speed Pills */}
+                <div className="flex items-center gap-1 bg-[#0a0f1e] p-1 rounded-xl border border-[#1c263c]">
                   {[0.8, 1.0, 1.2, 1.5].map((rate) => (
                     <button
                       key={rate}
@@ -615,8 +615,8 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                       onClick={() => handleSpeedSelect(rate)}
                       className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                         playbackRate === rate
-                          ? 'bg-[#8ab4f8] text-[#0e0e11] shadow-xs'
-                          : 'text-[#808092] hover:text-white'
+                          ? 'bg-[#8ab4f8] text-[#0a0e1a] shadow-xs'
+                          : 'text-[#8090ad] hover:text-white'
                       }`}
                     >
                       {rate === 1.0 ? '1x' : `${rate}x`}
@@ -633,9 +633,9 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                     step="0.05"
                     value={playbackRate}
                     onChange={(e) => handleSpeedSelect(parseFloat(e.target.value))}
-                    className="w-full h-1.5 bg-[#252535] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8]"
+                    className="w-full h-1.5 bg-[#1c263c] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8]"
                   />
-                  <div className="flex justify-between text-[10px] text-[#707082] mt-1 font-mono">
+                  <div className="flex justify-between text-[10px] text-[#7080a0] mt-1 font-mono">
                     <span>0.5x Slow</span>
                     <span>1.0x Normal</span>
                     <span>2.0x Fast</span>
@@ -646,15 +646,15 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
               {/* Delivery Pacing & Target Duration in stacked blocks */}
               <div className="grid grid-cols-1 gap-3 text-xs">
                 {/* Pacing & Delivery Tone */}
-                <div className="space-y-1.5 bg-[#181822] p-3 rounded-xl border border-[#262638]">
-                  <label className="text-[#c0c0d0] font-semibold flex items-center gap-1.5">
+                <div className="space-y-1.5 bg-[#12192d] p-3 rounded-xl border border-[#1f2b45]">
+                  <label className="text-[#c0d0ec] font-semibold flex items-center gap-1.5">
                     <Volume1 className="w-3.5 h-3.5 text-[#8ab4f8]" />
                     Delivery Pacing:
                   </label>
                   <select
                     value={selectedPace}
                     onChange={(e) => setSelectedPace(e.target.value)}
-                    className="w-full bg-[#121218] border border-[#2a2a3c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e2ea] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
+                    className="w-full bg-[#0a0f1e] border border-[#1c263c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e8f5] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
                   >
                     <option value="moderately fast">Moderately Fast (Standard 19s)</option>
                     <option value="fast & viral">Fast & Urgent (16s TikTok)</option>
@@ -664,15 +664,15 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                 </div>
 
                 {/* Target Duration Mode */}
-                <div className="space-y-1.5 bg-[#181822] p-3 rounded-xl border border-[#262638]">
-                  <label className="text-[#c0c0d0] font-semibold flex items-center gap-1.5">
+                <div className="space-y-1.5 bg-[#12192d] p-3 rounded-xl border border-[#1f2b45]">
+                  <label className="text-[#c0d0ec] font-semibold flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-[#8ab4f8]" />
                     Target Duration:
                   </label>
                   <select
                     value={targetDurationMode}
                     onChange={(e) => setTargetDurationMode(e.target.value)}
-                    className="w-full bg-[#121218] border border-[#2a2a3c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e2ea] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
+                    className="w-full bg-[#0a0f1e] border border-[#1c263c] rounded-lg px-2.5 py-1.5 text-xs text-[#e2e8f5] font-medium focus:outline-hidden focus:border-[#8ab4f8]"
                   >
                     <option value="auto">Auto (Natural Script Duration)</option>
                     <option value="15">15 Seconds (Short Reel / TikTok)</option>
@@ -690,17 +690,17 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                         max="180"
                         value={customDurationInput}
                         onChange={(e) => setCustomDurationInput(Math.max(3, parseInt(e.target.value) || 15))}
-                        className="w-20 bg-[#121218] border border-[#2a2a3c] rounded-lg px-2 py-1 text-xs text-[#e2e2ea] font-mono"
+                        className="w-20 bg-[#0a0f1e] border border-[#1c263c] rounded-lg px-2 py-1 text-xs text-[#e2e8f5] font-mono"
                       />
-                      <span className="text-[10px] text-[#808092] font-mono">sec target</span>
+                      <span className="text-[10px] text-[#8090ad] font-mono">sec target</span>
                     </div>
                   )}
                 </div>
               </div>
 
               {/* Status Note */}
-              <div className="px-3 py-2 rounded-xl bg-[#181822] border border-[#262638] flex items-center justify-between text-[11px]">
-                <span className="flex items-center gap-1.5 text-[#a0a0b0]">
+              <div className="px-3 py-2 rounded-xl bg-[#12192d] border border-[#1f2b45] flex items-center justify-between text-[11px]">
+                <span className="flex items-center gap-1.5 text-[#9ab0d4]">
                   <span className="w-2 h-2 rounded-full bg-[#8ab4f8] animate-pulse"></span>
                   Export Speed:
                 </span>
@@ -710,23 +710,23 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
               </div>
             </div>
 
-            {/* Voicemaker Action Buttons (Cursor AI Style) */}
-            <div className="pt-3 border-t border-[#252535] space-y-2.5">
+            {/* Voicemaker Action Buttons */}
+            <div className="pt-3 border-t border-[#1c263c] space-y-2.5">
               {/* Primary Convert Button */}
               <button
                 type="button"
                 onClick={handleTriggerGenerate}
                 disabled={isGenerating}
-                className="w-full py-3.5 px-4 rounded-xl bg-linear-to-r from-[#8ab4f8] to-[#689ef7] hover:from-[#9bc0fa] hover:to-[#7aa9f8] text-[#0e0e11] font-mono font-bold tracking-wider uppercase text-xs sm:text-sm shadow-md active:scale-98 transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3.5 px-4 rounded-xl bg-linear-to-r from-[#8ab4f8] to-[#689ef7] hover:from-[#9bc0fa] hover:to-[#7aa9f8] text-[#0a0e1a] font-mono font-bold tracking-wider uppercase text-xs sm:text-sm shadow-md active:scale-98 transition-all flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isGenerating ? (
                   <>
-                    <Sparkles className="w-4 h-4 animate-spin text-[#0e0e11]" />
+                    <Sparkles className="w-4 h-4 animate-spin text-[#0a0e1a]" />
                     <span>SYNTHESIZING AUDIO...</span>
                   </>
                 ) : (
                   <>
-                    <Mic className="w-4 h-4 text-[#0e0e11]" />
+                    <Mic className="w-4 h-4 text-[#0a0e1a]" />
                     <span>CONVERT TO SPEECH</span>
                   </>
                 )}
@@ -738,7 +738,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                   type="button"
                   onClick={handleDownloadAtSpeed}
                   disabled={isExporting}
-                  className="w-full py-3 px-4 rounded-xl bg-[#1c1c27] hover:bg-[#252535] text-[#ededf5] font-mono font-bold text-xs sm:text-sm border border-[#303045] transition-all cursor-pointer flex items-center justify-center gap-2 shadow-xs active:scale-98 disabled:opacity-50"
+                  className="w-full py-3 px-4 rounded-xl bg-[#18233d] hover:bg-[#202f52] text-[#f0f4fc] font-mono font-bold text-xs sm:text-sm border border-[#28395e] transition-all cursor-pointer flex items-center justify-center gap-2 shadow-xs active:scale-98 disabled:opacity-50"
                   title={`Download audio rendered at ${playbackRate}x speed`}
                 >
                   {isExporting ? (
@@ -754,7 +754,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
                   )}
                 </button>
               ) : (
-                <p className="text-[11px] text-[#606070] text-center font-mono">
+                <p className="text-[11px] text-[#607090] text-center font-mono">
                   convert script to unlock {playbackRate}x download
                 </p>
               )}
@@ -764,7 +764,7 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
 
         {/* Master Audio Player & Waveform Visualizer */}
         {audioBase64 ? (
-          <div className="pt-4 border-t border-[#252535]">
+          <div className="pt-4 border-t border-[#1c263c]">
             <AudioPlayer
               audioBase64={audioBase64}
               mimeType={mimeType}
@@ -779,14 +779,14 @@ export const ScriptSection: React.FC<ScriptSectionProps> = ({
             />
           </div>
         ) : (
-          <div className="pt-3 border-t border-[#252535] flex items-center justify-between text-xs text-[#808092] bg-[#14141c] p-3.5 rounded-xl border border-[#252535]">
+          <div className="pt-3 border-t border-[#1c263c] flex items-center justify-between text-xs text-[#8090ad] bg-[#0e1424] p-3.5 rounded-xl border border-[#1c263c]">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#8ab4f8]" />
               <span>
                 Enter your script above and click <strong className="text-white font-bold">"CONVERT TO SPEECH"</strong> to synthesize Pakistani Urdu audio.
               </span>
             </div>
-            <span className="text-[11px] font-mono text-[#8ab4f8] bg-[#1e1e2b] px-2 py-0.5 rounded border border-[#2e2e40] hidden sm:inline">
+            <span className="text-[11px] font-mono text-[#8ab4f8] bg-[#18233d] px-2 py-0.5 rounded border border-[#28395e] hidden sm:inline">
               READY
             </span>
           </div>

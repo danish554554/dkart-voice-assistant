@@ -63,22 +63,22 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
   ];
 
   return (
-    <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-xl space-y-5 text-[#e2e2e8]">
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#252535]">
+    <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 shadow-xl space-y-5 text-[#e2e8f5] backdrop-blur-md">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#1c263c]">
         <div>
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#8ab4f8]" />
-            <h3 className="font-bold text-[#f2f2f8] text-base font-mono">
+            <h3 className="font-bold text-[#f2f5fc] text-base font-mono">
               Commercial Reel Storyboard & Timing
             </h3>
           </div>
-          <p className="text-xs text-[#808092] mt-0.5">
+          <p className="text-xs text-[#8090ad] mt-0.5">
             Engineered for optimum retention on Daraz, TikTok, and Meta Reels algorithms
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-mono bg-[#14141c] px-3 py-1.5 rounded-xl border border-[#252535]">
-          <span className="text-[#808092]">Total Run Time:</span>
+        <div className="flex items-center gap-2 text-xs font-mono bg-[#0e1424] px-3 py-1.5 rounded-xl border border-[#1c263c]">
+          <span className="text-[#8090ad]">Total Run Time:</span>
           <span className="text-[#8ab4f8] font-bold">19.00s</span>
         </div>
       </div>
@@ -93,13 +93,13 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
               onClick={() => onSeek(act.start)}
               className={`p-4 rounded-xl border transition-all cursor-pointer relative ${
                 isActive
-                  ? 'bg-[#222230] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/40 shadow-md'
-                  : 'bg-[#14141c] border-[#252535] hover:border-[#38384d] hover:bg-[#1a1a24]'
+                  ? 'bg-[#192544] border-[#8ab4f8] ring-1 ring-[#8ab4f8]/40 shadow-md'
+                  : 'bg-[#0e1424] border-[#1c263c] hover:border-[#2a3c64] hover:bg-[#131b30]'
               }`}
             >
-              <div className="flex items-center justify-between pb-2 border-b border-[#252535]">
+              <div className="flex items-center justify-between pb-2 border-b border-[#1c263c]">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#1e1e2b] text-[#8ab4f8] border border-[#2d2d3e]">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#18233d] text-[#8ab4f8] border border-[#28395e]">
                     Act 0{act.act}
                   </span>
                   <span className="font-bold text-xs text-[#ededf2]">
@@ -107,7 +107,7 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#808092]">
+                <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#8090ad]">
                   <span>{act.timeRange}</span>
                   <PlayCircle className="w-3.5 h-3.5 text-[#8ab4f8] hover:scale-110 transition-transform" />
                 </div>
@@ -115,27 +115,27 @@ export const TimelineBreakdown: React.FC<TimelineBreakdownProps> = ({
 
               {/* Urdu Line */}
               <div className="py-2.5 text-right">
-                <p className="text-base font-bold font-urdu text-[#f2f2f8] leading-relaxed">
+                <p className="text-base font-bold font-urdu text-[#f2f5fc] leading-relaxed">
                   {act.urduSummary}
                 </p>
               </div>
 
               {/* Specifications */}
-              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#252535] text-[11px]">
-                <div className="bg-[#181822] p-2 rounded-lg border border-[#282838]">
-                  <span className="text-[#757585] block text-[9px] uppercase font-mono font-bold">
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#1c263c] text-[11px]">
+                <div className="bg-[#12192d] p-2 rounded-lg border border-[#1f2b45]">
+                  <span className="text-[#7888a6] block text-[9px] uppercase font-mono font-bold">
                     Tone / Energy
                   </span>
-                  <span className="text-[#d5d5e2] font-medium">
+                  <span className="text-[#d5ddee] font-medium">
                     {act.energy}
                   </span>
                 </div>
 
-                <div className="bg-[#181822] p-2 rounded-lg border border-[#282838]">
-                  <span className="text-[#757585] block text-[9px] uppercase font-mono font-bold">
+                <div className="bg-[#12192d] p-2 rounded-lg border border-[#1f2b45]">
+                  <span className="text-[#7888a6] block text-[9px] uppercase font-mono font-bold">
                     Visual Scene Cue
                   </span>
-                  <span className="text-[#9595a5] line-clamp-1">
+                  <span className="text-[#95a2bd] line-clamp-1">
                     {act.visualCue}
                   </span>
                 </div>

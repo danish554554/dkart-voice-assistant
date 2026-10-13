@@ -180,7 +180,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   ];
 
   return (
-    <div className="bg-[#181820] border border-[#2b2b3c] rounded-2xl p-5 shadow-xl text-[#e2e2e8]">
+    <div className="bg-[#101628]/85 border border-[#1e2a44] rounded-2xl p-5 shadow-xl text-[#e2e8f5] backdrop-blur-md">
       <audio
         ref={audioRef}
         onPlay={() => setIsPlaying(true)}
@@ -191,21 +191,21 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       />
 
       {/* Header Info */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#252535]">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#1c263c]">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#22222f] border border-[#303042] flex items-center justify-center text-[#8ab4f8]">
+          <div className="w-9 h-9 rounded-xl bg-[#18233d] border border-[#28395e] flex items-center justify-center text-[#8ab4f8]">
             <Radio className="w-5 h-5 animate-pulse text-[#8ab4f8]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-bold text-[#f2f2f8] text-sm sm:text-base">
+              <h3 className="font-bold text-[#f2f5fc] text-sm sm:text-base">
                 Urdu Commercial Voice-Over Master
               </h3>
-              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#20202e] text-[#8ab4f8] border border-[#323245]">
+              <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#18233d] text-[#8ab4f8] border border-[#28395e]">
                 BROADCAST READY
               </span>
             </div>
-            <p className="text-xs text-[#808092]">
+            <p className="text-xs text-[#8090ad]">
               Voice: <span className="text-white font-medium">{voiceUsed}</span> • Format: 24kHz Unary WAV (16-Bit) • Model: <span className="font-mono text-[#8ab4f8]">{model}</span>
             </p>
           </div>
@@ -216,13 +216,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             <button
               onClick={handleDownload}
               disabled={isExporting}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0e0e11] font-mono text-xs font-bold transition-all cursor-pointer shadow-md disabled:opacity-50"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0a0e1a] font-mono text-xs font-bold transition-all cursor-pointer shadow-md disabled:opacity-50"
               title={`Download audio rendered at ${internalRate}x speed`}
             >
               {isExporting ? (
-                <Sparkles className="w-3.5 h-3.5 text-[#0e0e11] animate-spin" />
+                <Sparkles className="w-3.5 h-3.5 text-[#0a0e1a] animate-spin" />
               ) : (
-                <Download className="w-3.5 h-3.5 text-[#0e0e11]" />
+                <Download className="w-3.5 h-3.5 text-[#0a0e1a]" />
               )}
               <span>{isExporting ? 'Exporting...' : `Download .WAV (${internalRate}x)`}</span>
             </button>
@@ -232,9 +232,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
       {/* Waveform Visualization */}
       <div className="py-4">
-        <div className="h-16 flex items-center justify-between gap-1 px-3 bg-[#121218] border border-[#252535] rounded-xl overflow-hidden relative">
+        <div className="h-16 flex items-center justify-between gap-1 px-3 bg-[#0a0f1e] border border-[#1c263c] rounded-xl overflow-hidden relative">
           {/* Target 19s marker overlay */}
-          <div className="absolute right-4 top-1.5 flex items-center gap-1 text-[10px] font-mono text-[#8ab4f8] bg-[#1a1a24] px-2 py-0.5 rounded border border-[#2e2e40] z-10 shadow-xs">
+          <div className="absolute right-4 top-1.5 flex items-center gap-1 text-[10px] font-mono text-[#8ab4f8] bg-[#141d33] px-2 py-0.5 rounded border border-[#223050] z-10 shadow-xs">
             <Clock className="w-3 h-3 text-[#8ab4f8]" />
             <span>Target: 19.0s</span>
           </div>
@@ -267,7 +267,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                   className={`w-full max-w-[6px] rounded-full transition-all duration-75 ${
                     isPassed
                       ? 'bg-[#8ab4f8] shadow-sm shadow-[#8ab4f8]/30'
-                      : 'bg-[#252535] group-hover:bg-[#35354a]'
+                      : 'bg-[#1a253c] group-hover:bg-[#28395e]'
                   }`}
                 />
               </div>
@@ -287,22 +287,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             value={currentTime}
             onChange={handleSeek}
             disabled={!audioBase64}
-            className="w-full h-2 bg-[#252535] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8] disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full h-2 bg-[#1c263c] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8] disabled:opacity-40 disabled:cursor-not-allowed"
           />
         </div>
 
-        <div className="flex items-center justify-between text-xs font-mono text-[#808092]">
+        <div className="flex items-center justify-between text-xs font-mono text-[#8090ad]">
           <div className="flex items-center gap-1.5 text-[#8ab4f8] font-semibold">
             <Clock className="w-3.5 h-3.5 text-[#8ab4f8]" />
             <span>{formatTime(currentTime)}</span>
           </div>
           <div className="flex items-center gap-2">
             {targetDuration && targetDuration > 0 && (
-              <span className="text-[#606072]">
+              <span className="text-[#607090]">
                 target: {targetDuration.toFixed(2)}s
               </span>
             )}
-            <span className="text-[#c0c0d2] font-medium">
+            <span className="text-[#c0d0ec] font-medium">
               / {formatTime(duration)}
             </span>
           </div>
@@ -310,41 +310,41 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       </div>
 
       {/* Transport Controls */}
-      <div className="mt-4 pt-4 border-t border-[#252535] flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-4 pt-4 border-t border-[#1c263c] flex flex-wrap items-center justify-between gap-4">
         {/* Playback Controls */}
         <div className="flex items-center gap-3">
           <button
             onClick={togglePlay}
             disabled={!audioBase64}
-            className="w-12 h-12 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0e0e11] flex items-center justify-center shadow-lg active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            className="w-12 h-12 rounded-xl bg-[#8ab4f8] hover:bg-[#9bc0fa] text-[#0a0e1a] flex items-center justify-center shadow-lg active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
             title={isPlaying ? 'Pause' : 'Play voice-over'}
           >
             {isPlaying ? (
-              <Pause className="w-5 h-5 fill-[#0e0e11]" />
+              <Pause className="w-5 h-5 fill-[#0a0e1a]" />
             ) : (
-              <Play className="w-5 h-5 fill-[#0e0e11] ml-0.5" />
+              <Play className="w-5 h-5 fill-[#0a0e1a] ml-0.5" />
             )}
           </button>
 
           <button
             onClick={handleRestart}
             disabled={!audioBase64}
-            className="w-10 h-10 rounded-xl bg-[#1c1c27] hover:bg-[#252535] text-[#8ab4f8] flex items-center justify-center border border-[#2d2d3e] active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
+            className="w-10 h-10 rounded-xl bg-[#18233d] hover:bg-[#223052] text-[#8ab4f8] flex items-center justify-center border border-[#28395e] active:scale-95 transition-all disabled:opacity-40 cursor-pointer"
             title="Replay from start"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
 
           {/* Speed selector */}
-          <div className="flex items-center bg-[#121218] border border-[#252535] rounded-xl p-0.5 text-xs font-mono">
+          <div className="flex items-center bg-[#0a0f1e] border border-[#1c263c] rounded-xl p-0.5 text-xs font-mono">
             {[0.8, 1.0, 1.2, 1.5].map((rate) => (
               <button
                 key={rate}
                 onClick={() => changePlaybackRate(rate)}
                 className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer font-bold ${
                   internalRate === rate
-                    ? 'bg-[#8ab4f8] text-[#0e0e11] shadow-xs'
-                    : 'text-[#808092] hover:text-white'
+                    ? 'bg-[#8ab4f8] text-[#0a0e1a] shadow-xs'
+                    : 'text-[#8090ad] hover:text-white'
                 }`}
                 title={`Play & download audio at ${rate}x speed`}
               >
@@ -359,7 +359,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={toggleMute}
-              className="text-[#808092] hover:text-white transition-colors cursor-pointer"
+              className="text-[#8090ad] hover:text-white transition-colors cursor-pointer"
               title={isMuted ? 'Unmute' : 'Mute'}
             >
               {isMuted || volume === 0 ? (
@@ -375,14 +375,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
               step={0.05}
               value={isMuted ? 0 : volume}
               onChange={handleVolumeChange}
-              className="w-20 h-1.5 bg-[#252535] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8]"
+              className="w-20 h-1.5 bg-[#1c263c] rounded-lg appearance-none cursor-pointer accent-[#8ab4f8]"
             />
           </div>
 
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#808092] border-l border-[#252535] pl-3 font-mono">
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#8090ad] border-l border-[#1c263c] pl-3 font-mono">
             <span className="w-2 h-2 rounded-full bg-[#8ab4f8]"></span>
             <span>Profile:</span>
-            <span className="text-[#e2e2ea] font-medium">{voiceUsed}</span>
+            <span className="text-[#e2e8f5] font-medium">{voiceUsed}</span>
           </div>
         </div>
       </div>
